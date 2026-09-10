@@ -212,7 +212,7 @@ describe("kubernetesCard builder", () => {
     // unclickable text inside the troubleshooting accordion.
     const card = await buildCard();
     const urls = (card.docLinks ?? []).map((l) => l.url);
-    expect(urls).toContain("https://github.com/openobserve/hotcommerce");
+    expect(urls).toContain("https://github.com/kovvurusubbu/openominitor/hotcommerce");
     expect(urls).toContain("https://github.com/open-telemetry/opentelemetry-operator");
   });
 

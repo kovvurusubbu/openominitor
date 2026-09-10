@@ -339,7 +339,7 @@ import type { AlertLibraryEntry, AlertLibraryFile, StreamsByType } from "@/types
 import { raw, useI18nTyped, type I18nKey } from "@/types/i18n";
 
 /** Where the alerts are authored. Not the serving URL — that is a constant. */
-const CONTRIBUTE_URL = "https://github.com/openobserve/o2-alerts-library";
+const CONTRIBUTE_URL = "https://github.com/kovvurusubbu/openominitor/o2-alerts-library";
 
 const { t } = useI18nTyped();
 const store = useStore();

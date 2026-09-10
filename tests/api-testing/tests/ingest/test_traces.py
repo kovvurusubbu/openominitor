@@ -123,7 +123,7 @@ def test_e2e_old_trace_ingestion(create_session, base_url):
         content["partialSuccess"]["rejectedSpans"] == 1
     ), f"Invalid trace span time expected 1 rejected span, but got {content}"
 
-# This is specifically for https://github.com/openobserve/openobserve/issues/4371
+# This is specifically for https://github.com/kovvurusubbu/openominitor/openobserve/issues/4371
 def test_e2e_invalid_trace_ingestion(create_session, base_url):
     """Invalid structure JSON trace should return proper error"""
     session = create_session

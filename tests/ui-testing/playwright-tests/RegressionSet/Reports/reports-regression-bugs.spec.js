@@ -17,13 +17,13 @@ test.describe("Reports Regression Bug Fixes", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Reports regression test setup completed');
   });
 
   // ==========================================================================
   // Bug #11231: In reports each save shifts the timestamp by the timezone offset
-  // https://github.com/openobserve/openobserve/issues/11231
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11231
   // ==========================================================================
   test("Report save should not shift timestamp by timezone offset", {
     tag: ['@bug-11231', '@P1', '@regression', '@reportsRegression']
@@ -38,16 +38,16 @@ test.describe("Reports Regression Bug Fixes", () => {
       await pm.commonActions.dismissBlockingOverlays();
       await page.waitForTimeout(500);
       await pm.dashboardPage.navigateToDashboards();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       testLogger.info('Navigated to dashboards');
 
       await pm.dashboardPage.createDashboard();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       testLogger.info(`Created dashboard: ${pm.dashboardPage.dashboardName}`);
 
       // Create a report using the dashboard via POM methods
-      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => {});
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => { });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       testLogger.info('Navigated to reports');
 
       await pm.reportsPage.createReportAddReportButton();
@@ -62,17 +62,17 @@ test.describe("Reports Regression Bug Fixes", () => {
       testLogger.info(`Created report: ${TEST_REPORT_NAME}`);
 
       // Wait for success toast after report save (OToast component's success variant)
-      await pm.reportsPage.toastSuccess.first().waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
+      await pm.reportsPage.toastSuccess.first().waitFor({ state: 'visible', timeout: 15000 }).catch(() => { });
 
       // Navigate to reports list and edit the report to configure schedule
-      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => {});
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => { });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       await pm.reportsPage.reportSearchInputField.fill(TEST_REPORT_NAME);
 
       const editBtn = pm.reportsPage.editReportBtn(TEST_REPORT_NAME);
       await expect(editBtn, 'Edit button should be visible').toBeVisible({ timeout: 5000 });
       await editBtn.click();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       testLogger.info('Opened report for editing');
 
       // Navigate through step 1 (dashboard) to reach step 2 (schedule)
@@ -105,14 +105,14 @@ test.describe("Reports Regression Bug Fixes", () => {
       testLogger.info('Saved report with schedule configured');
 
       // Re-open to verify time has NOT shifted (the bug: each save shifts by TZ offset)
-      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => {});
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => { });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       await pm.reportsPage.reportSearchInputField.fill(TEST_REPORT_NAME);
 
       const editBtnReopen = pm.reportsPage.editReportBtn(TEST_REPORT_NAME);
       await expect(editBtnReopen, 'Edit button should still be visible after re-save').toBeVisible({ timeout: 5000 });
       await editBtnReopen.click();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       // Navigate through step 1 to reach schedule step
       await pm.reportsPage.createReportContinueButtonStep1();
@@ -137,8 +137,8 @@ test.describe("Reports Regression Bug Fixes", () => {
       testLogger.info('PASSED: Report save does not shift timestamp');
     } finally {
       // Cleanup: delete report and dashboard regardless of test outcome
-      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => {});
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.goto(reportsUrl, { timeout: 15000 }).catch(() => { });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       try {
         await pm.reportsPage.deleteReport(TEST_REPORT_NAME);

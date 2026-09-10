@@ -50,7 +50,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.aks.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "compute",
   },
   {
@@ -60,7 +60,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.front-door.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "networking",
   },
   {
@@ -70,7 +70,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.app-service.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "compute",
   },
   {
@@ -80,7 +80,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.sql-database.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "storage",
   },
   {
@@ -90,7 +90,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.storage-account.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "storage",
   },
   {
@@ -100,7 +100,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.virtual-machines.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "compute",
   },
   {
@@ -110,7 +110,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.application-gateway.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "networking",
   },
   {
@@ -120,7 +120,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.load-balancer.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "networking",
   },
   {
@@ -130,7 +130,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.network-security-group.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "security",
   },
   {
@@ -140,7 +140,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.key-vault.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "security",
   },
   {
@@ -150,7 +150,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.active-directory.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "security",
   },
   {
@@ -160,7 +160,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.cosmos-db.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "storage",
   },
   {
@@ -170,7 +170,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.functions.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "compute",
   },
   {
@@ -180,7 +180,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.api-management.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "other",
   },
   {
@@ -190,7 +190,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.container-instances.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "compute",
   },
   {
@@ -200,7 +200,7 @@ export const azureIntegrations: AzureIntegration[] = [
     icon: "",
     descriptionKey: "ingestion.integrations.azure.virtual-network.description",
     hasDashboard: false,
-    documentationUrl: "https://github.com/openobserve/azure-function-openobserve",
+    documentationUrl: "https://github.com/kovvurusubbu/openominitor/azure-function-openobserve",
     category: "networking",
   },
 ];

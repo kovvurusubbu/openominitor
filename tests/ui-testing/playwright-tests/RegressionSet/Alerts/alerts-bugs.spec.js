@@ -43,7 +43,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
       await page.goto(
         `${process.env.ZO_BASE_URL || 'http://localhost:5080'}?org_identifier=${getOrgIdentifier() || 'default'}`,
       );
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       const baseUrl = process.env.ZO_BASE_URL || 'http://localhost:5080';
       const org = getOrgIdentifier() || 'default';
@@ -125,7 +125,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
       await page.goto(
         `${process.env.ZO_BASE_URL || 'http://localhost:5080'}?org_identifier=${getOrgIdentifier() || 'default'}`,
       );
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       const baseUrl = process.env.ZO_BASE_URL || 'http://localhost:5080';
       const org = getOrgIdentifier() || 'default';
@@ -162,14 +162,14 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Alerts regression batch-1 setup completed');
   });
 
   // ==========================================================================
   // Bug #10110: On adding a template in the override template option on
   //             alerts UI, it is shown twice in the input field
-  // https://github.com/openobserve/openobserve/issues/10110
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10110
   // ==========================================================================
   test("Template should not appear twice in override template input", {
     tag: ['@bug-10110', '@P1', '@regression', '@alertsRegression', '@alertsRegressionTemplateOverride']
@@ -178,7 +178,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
 
     // Navigate to alerts page
     await pm.commonActions.navigateToAlerts();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('✓ Navigated to alerts page');
 
     // Click "Add Alert" button (should be enabled now that beforeAll created a destination)
@@ -251,7 +251,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11315: Bulk alert import failing saying alert already exists
-  // https://github.com/openobserve/openobserve/issues/11315
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11315
   // ==========================================================================
   test("Alert import dialog should open without premature duplicate errors", {
     tag: ['@bug-11315', '@P1', '@regression', '@alertsRegression']
@@ -259,7 +259,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
     testLogger.info('Test: Verify bulk alert import does not falsely report duplicates (Bug #11315)');
 
     await pm.commonActions.navigateToAlerts();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated to alerts page');
 
     // Open the import dialog via POM locator
@@ -293,7 +293,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #4342: Alert name with #, %, : special chars fails with unauthorized
-  // https://github.com/openobserve/openobserve/issues/4342
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4342
   // ==========================================================================
   test("Alert name with special characters should be accepted", {
     tag: ['@bug-4342', '@P2', '@regression', '@alertsRegression']
@@ -301,7 +301,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
     testLogger.info('Test: Verify alert name with special chars works (Bug #4342)');
 
     await pm.commonActions.navigateToAlerts();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated to alerts page');
 
     await expect(pm.alertsPage.getAddAlertButtonLocator(), 'Add Alert button should be visible').toBeVisible({ timeout: 5000 });
@@ -327,7 +327,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #4288: Alert SQL — "default" keyword without quotes causes issues
-  // https://github.com/openobserve/openobserve/issues/4288
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4288
   // ==========================================================================
   test("Alert SQL editor should accept 'default' keyword without quotes", {
     tag: ['@bug-4288', '@P2', '@regression', '@alertsRegression']
@@ -335,7 +335,7 @@ test.describe("Alerts Regression Bugs — Batch 1", () => {
     testLogger.info('Test: Verify default keyword in alert SQL works (Bug #4288)');
 
     await pm.commonActions.navigateToAlerts();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated to alerts page');
 
     await expect(pm.alertsPage.getAddAlertButtonLocator(), 'Add Alert button should be visible').toBeVisible({ timeout: 5000 });

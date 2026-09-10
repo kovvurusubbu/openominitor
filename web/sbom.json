@@ -643,17 +643,17 @@
       "purl": "pkg:npm/%40openobserve/browser-logs@0.4.0-beta.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/openobserve/browser-sdk.git#packages/browser-logs",
+          "url": "git+https://github.com/kovvurusubbu/openominitor/browser-sdk.git#packages/browser-logs",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk#readme",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk/issues",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
@@ -693,17 +693,17 @@
       "purl": "pkg:npm/%40openobserve/browser-rum@0.4.0-beta.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/openobserve/browser-sdk.git#packages/browser-rum",
+          "url": "git+https://github.com/kovvurusubbu/openominitor/browser-sdk.git#packages/browser-rum",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk#readme",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk/issues",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
@@ -10818,17 +10818,17 @@
       "purl": "pkg:npm/%40openobserve/browser-core@0.4.0-beta.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/openobserve/browser-sdk.git#packages/browser-core",
+          "url": "git+https://github.com/kovvurusubbu/openominitor/browser-sdk.git#packages/browser-core",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk#readme",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk/issues",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
@@ -10868,17 +10868,17 @@
       "purl": "pkg:npm/%40openobserve/js-core@0.4.0-beta.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/openobserve/browser-sdk.git#packages/js-core",
+          "url": "git+https://github.com/kovvurusubbu/openominitor/browser-sdk.git#packages/js-core",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk#readme",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk/issues",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
@@ -10918,17 +10918,17 @@
       "purl": "pkg:npm/%40openobserve/browser-rum-core@0.4.0-beta.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/openobserve/browser-sdk.git#packages/browser-rum-core",
+          "url": "git+https://github.com/kovvurusubbu/openominitor/browser-sdk.git#packages/browser-rum-core",
           "type": "vcs",
           "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk#readme",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk#readme",
           "type": "website",
           "comment": "as detected from PackageJson property \"homepage\""
         },
         {
-          "url": "https://github.com/openobserve/browser-sdk/issues",
+          "url": "https://github.com/kovvurusubbu/openominitor/browser-sdk/issues",
           "type": "issue-tracker",
           "comment": "as detected from PackageJson property \"bugs.url\""
         },

@@ -16,7 +16,7 @@ keywords = [
 ]
 license = "AGPL-3.0"
 name = "openobserve"
-repository = "https://github.com/openobserve/openobserve/"
+repository = "https://github.com/kovvurusubbu/openominitor/openobserve/"
 version = "0.93.0"
 publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -359,11 +359,11 @@ o2_dex = { path = "src/enterprise/o2_dex" }
 o2_enterprise = { path = "src/enterprise/o2_enterprise", default-features = false }
 o2_openfga = { path = "src/enterprise/o2_openfga" }
 o2_ratelimit = { path = "src/enterprise/o2_ratelimit" }
-vortex = { git = "https://github.com/openobserve/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c", features = [
+vortex = { git = "https://github.com/kovvurusubbu/openominitor/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c", features = [
     "tokio",
 ] }
-vortex-btrblocks = { git = "https://github.com/openobserve/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c" }
-vortex-datafusion = { git = "https://github.com/openobserve/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c" }
+vortex-btrblocks = { git = "https://github.com/kovvurusubbu/openominitor/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c" }
+vortex-datafusion = { git = "https://github.com/kovvurusubbu/openominitor/vortex", rev = "3c77193fa8fb90d055f95d8a3e1f6748a4d15f8c" }
 aes-siv = "0.7.0"
 ahash = { version = "0.8", features = ["serde"] }
 axum = { version = "0.8", features = ["macros", "multipart", "tracing"] }
@@ -387,9 +387,9 @@ mime = "0.3.17"
 mime_guess = "2.0"
 multer = "3.1"
 pprof = { version = "0.15", features = ["flamegraph", "protobuf-codec"] }
-promql-parser = { version = "0.6", git = "https://github.com/openobserve/promql-parser", branch = "openobserve" }
+promql-parser = { version = "0.6", git = "https://github.com/kovvurusubbu/openominitor/promql-parser", branch = "openobserve" }
 rcgen = "0.14.4"
-rmcp-openapi = { version = "0.23.2", git = "https://github.com/openobserve/rmcp-openapi", branch = "v0.23.2-feat" }
+rmcp-openapi = { version = "0.23.2", git = "https://github.com/kovvurusubbu/openominitor/rmcp-openapi", branch = "v0.23.2-feat" }
 rust-embed-for-web = "11.4.1"
 sourcemap = "9.3.2"
 tikv-jemalloc-ctl = { version = "0.6", features = [
@@ -458,7 +458,7 @@ dashmap = { version = "6.1", features = ["serde"] }
 datafusion = "54"
 datafusion-proto = "54"
 datafusion-functions-aggregate-common = "54"
-datafusion-functions-json = { git = "https://github.com/openobserve/datafusion-functions-json", rev = "0df53d710425cc91cf109e77a050bbe1e374e4fe" }
+datafusion-functions-json = { git = "https://github.com/kovvurusubbu/openominitor/datafusion-functions-json", rev = "0df53d710425cc91cf109e77a050bbe1e374e4fe" }
 expect-test = "1.4"
 arrow = { version = "58", features = ["ipc_compression", "prettyprint"] }
 arrow-flight = "58"
@@ -620,7 +620,7 @@ utoipa = { version = "5.4", features = ["axum_extras", "openapi_extensions"] }
 utoipa-axum = "0.2"
 utoipa-swagger-ui = { version = "9", features = ["axum", "vendored"] }
 uuid = { version = "1.20", features = ["v7"] }
-vector-enrichment = { version = "0.1.0", package = "enrichment", git = "https://github.com/openobserve/vector", branch = "branch-v0.54" }
+vector-enrichment = { version = "0.1.0", package = "enrichment", git = "https://github.com/kovvurusubbu/openominitor/vector", branch = "branch-v0.54" }
 vrl = { version = "0.31", features = [
     "arbitrary",
     "value",
@@ -632,38 +632,38 @@ zip = "8.0"
 zstd = "0.13"
 
 [patch.crates-io]
-datafusion = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-catalog = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-catalog-listing = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-common-runtime = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-datasource = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-datasource-arrow = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-datasource-csv = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-datasource-json = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-datasource-parquet = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-doc = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-execution = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-expr = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-expr-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-aggregate = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-aggregate-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-nested = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-table = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-window = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-functions-window-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-macros = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-optimizer = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-physical-expr = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-physical-expr-adapter = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-physical-expr-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-physical-optimizer = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-physical-plan = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-proto = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-proto-common = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-pruning = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-session = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-datafusion-sql = { git = "https://github.com/openobserve/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
-object_store = { git = "https://github.com/openobserve/arrow-rs-object-store", branch = "openobserve-v0.13.2" }
-tantivy = { git = "https://github.com/openobserve/tantivy", branch = "perf/openobserve" }
+datafusion = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-catalog = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-catalog-listing = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-common-runtime = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-datasource = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-datasource-arrow = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-datasource-csv = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-datasource-json = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-datasource-parquet = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-doc = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-execution = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-expr = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-expr-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-aggregate = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-aggregate-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-nested = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-table = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-window = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-functions-window-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-macros = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-optimizer = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-physical-expr = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-physical-expr-adapter = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-physical-expr-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-physical-optimizer = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-physical-plan = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-proto = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-proto-common = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-pruning = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-session = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+datafusion-sql = { git = "https://github.com/kovvurusubbu/openominitor/datafusion", rev = "869ec1a70482e1a26c4ac2fde3e9fd5545c33d7b" }
+object_store = { git = "https://github.com/kovvurusubbu/openominitor/arrow-rs-object-store", branch = "openobserve-v0.13.2" }
+tantivy = { git = "https://github.com/kovvurusubbu/openominitor/tantivy", branch = "perf/openobserve" }

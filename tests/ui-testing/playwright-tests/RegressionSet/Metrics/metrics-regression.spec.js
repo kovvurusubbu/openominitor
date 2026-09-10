@@ -29,7 +29,7 @@ test.describe("Metrics Regression Bugs", () => {
 
     // Navigate to metrics page
     await pm.metricsPage.gotoMetricsPage();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(1000);
 
     testLogger.info('Metrics regression test setup completed');
@@ -37,7 +37,7 @@ test.describe("Metrics Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #11061: "No results found" text not visible in dark mode
-  // https://github.com/openobserve/openobserve/issues/11061
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11061
   // ==========================================================================
   // SKIPPED: Product issue - "No results found" text element not found in dark mode
   // Requires product fix before re-enabling test
@@ -69,7 +69,7 @@ test.describe("Metrics Regression Bugs", () => {
 
     // Wait for page to stabilize after theme change
     await page.waitForTimeout(2000);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('✓ Dark mode confirmed active, proceeding with visibility test');
 
     // Enter query that returns no results

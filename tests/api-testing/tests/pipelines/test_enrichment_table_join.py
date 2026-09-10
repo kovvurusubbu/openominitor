@@ -9,7 +9,7 @@ Tests for cross-stream type JOINs between logs and enrichment tables:
 - Complex multi-table scenarios
 - NULL handling with COALESCE
 
-Related PR: https://github.com/openobserve/openobserve/pull/5452
+Related PR: https://github.com/kovvurusubbu/openominitor/openobserve/pull/5452
 """
 
 import logging

@@ -125,7 +125,7 @@ jobs:
           gh issue comment "$ISSUE" --repo openobserve/openobserve --body \
           "### 🤖 Test-Assist — started
 
-          Running bug verification in o2-enterprise CI now — I'll post the verdict back here when ready. ([engine runs](https://github.com/openobserve/o2-enterprise/actions/workflows/test-assist.yml))"
+          Running bug verification in o2-enterprise CI now — I'll post the verdict back here when ready. ([engine runs](https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/test-assist.yml))"
 
       - name: Notify dispatch failure on the source issue
         # If the dispatch itself failed (expired/insufficient PAT, missing engine workflow, network),

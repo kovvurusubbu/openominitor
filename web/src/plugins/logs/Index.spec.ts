@@ -829,7 +829,7 @@ describe("Logs Index", async () => {
 
   /**
    * VRL Visualization Support Tests - Index.vue
-   * PR Reference: https://github.com/openobserve/openobserve/pull/9295
+   * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/9295
    *
    * Tests for VRL function query propagation and visualization handling:
    * 1. VRL function query encoding with b64EncodeUnicode
@@ -1086,7 +1086,7 @@ describe("Logs Index", async () => {
 
   /**
    * Build Query Page Support Tests - Index.vue
-   * PR Reference: https://github.com/openobserve/openobserve/pull/10305
+   * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/10305
    *
    * Tests for the new Build Query Page toggle feature:
    * 1. Build toggle visibility and interaction

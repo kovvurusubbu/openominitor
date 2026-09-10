@@ -19,7 +19,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Ingest data for traces
     await ingestTestData(page);
@@ -30,7 +30,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #10743: Selected stream lost when navigating away and back to Traces
-  // https://github.com/openobserve/openobserve/issues/10743
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10743
   // ==========================================================================
   test("Selected stream should persist when navigating away and returning to Traces", {
     tag: ['@bug-10743', '@P1', '@regression', '@tracesRegression', '@tracesRegressionNavigation']
@@ -43,22 +43,22 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     // Select the stream
     await pm.tracesPage.selectTraceStream('default');
-    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => { });
     const noStreamBefore = await pm.tracesPage.isNoStreamSelectedVisible();
     expect(noStreamBefore, 'Stream should be selected on traces page').toBeFalsy();
 
     // Run a search to confirm stream is active
     await pm.tracesPage.runTraceSearch();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Navigate to logs page
     await pm.tracesPage.navigateToLogs();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated to logs page');
 
     // Navigate back to traces
     await pm.tracesPage.navigateToTraces();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated back to traces');
 
     // Verify stream selection persists by checking "no stream selected" is still not visible
@@ -80,7 +80,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11580: PromQL selection persists after switching Metrics — Logs
-  // https://github.com/openobserve/openobserve/issues/11580
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11580
   // ==========================================================================
   test("Query editor should not display PromQL after switching from metrics to logs", {
     tag: ['@bug-11580', '@P1', '@regression', '@tracesRegression', '@tracesRegressionQueryEditor']
@@ -89,7 +89,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     // Step 1: Navigate to metrics page and select a stream
     await pm.metricsPage.gotoMetricsPage();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('✓ Navigated to metrics page');
 
     // Select PromQL mode
@@ -106,7 +106,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     // Step 2: Switch to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('✓ Switched to logs page');
 
     // Select a stream on logs page to trigger query editor display
@@ -134,7 +134,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11217: Traces editor does not display text under suggestions when typing
-  // https://github.com/openobserve/openobserve/issues/11217
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11217
   // ==========================================================================
   test("Trace query editor should display autocomplete suggestions when typing", {
     tag: ['@bug-11217', '@P1', '@regression', '@tracesRegression', '@tracesRegressionAutocomplete']
@@ -145,7 +145,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     await pm.tracesPage.navigateToTraces();
     await pm.tracesPage.isStreamSelectVisible();
     await pm.tracesPage.selectTraceStream('default');
-    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => { });
 
     // Switch to SQL mode to access the editor with autocomplete.
     // The syntax-guide was moved into the "More" dropdown menu,
@@ -218,7 +218,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11816: Trace API Called Multiple Times with Auto Search Enabled
-  // https://github.com/openobserve/openobserve/issues/11816
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11816
   // ==========================================================================
   test("trace search should not make duplicate API calls with auto search", {
     tag: ['@bug-11816', '@P1', '@regression', '@tracesRegression']
@@ -237,7 +237,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     });
 
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     testLogger.info('Navigated to traces, tracking API calls');
 
@@ -267,7 +267,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11815: Traces are not sorted correctly when sorted by spans column
-  // https://github.com/openobserve/openobserve/issues/11815
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11815
   // ==========================================================================
   test("traces should sort correctly by duration column", {
     tag: ['@bug-11815', '@P1', '@regression', '@tracesRegression']
@@ -277,7 +277,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     const orgName = 'default';
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.tracesPage.selectTraceStream('default');
     await pm.tracesPage.runTraceSearch();
@@ -308,7 +308,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11531: Traces Spans tab "Method" column references non-existent field
-  // https://github.com/openobserve/openobserve/issues/11531
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11531
   // ==========================================================================
   test("traces spans tab should not reference non-existent method field", {
     tag: ['@bug-11531', '@P1', '@regression', '@tracesRegression']
@@ -318,7 +318,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     const orgName = 'default';
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.tracesPage.selectTraceStream('default');
     await pm.tracesPage.runTraceSearch();
@@ -363,7 +363,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     if (!searchBarVisible) {
       // Navigate back to main traces view and re-check
       await pm.tracesPage.navigateBackFromTraceDetails();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       const searchBarAfterBack = pm.tracesPage.getSearchBarElement();
       await expect(searchBarAfterBack, 'Bug #11531: Search bar must be visible after returning from span details').toBeVisible({ timeout: 10000 });
     }
@@ -373,7 +373,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11446: Incorrect duration value displayed in Logs details Traces tab
-  // https://github.com/openobserve/openobserve/issues/11446
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11446
   // ==========================================================================
   test("logs detail traces tab should display correct duration values", {
     tag: ['@bug-11446', '@P2', '@regression', '@tracesRegression']
@@ -382,7 +382,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     const orgName = 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await pm.logsPage.selectRunQuery();
     await page.waitForTimeout(3000);
 
@@ -415,7 +415,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11384: On switching organization the Trace Explorer results are not cleared
-  // https://github.com/openobserve/openobserve/issues/11384
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11384
   // ==========================================================================
   test("switching organization should clear trace explorer results", {
     tag: ['@bug-11384', '@P1', '@regression', '@tracesRegression']
@@ -425,7 +425,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     const orgName = 'default';
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.tracesPage.selectTraceStream('default');
     await pm.tracesPage.runTraceSearch();
@@ -451,7 +451,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
           testLogger.info(`Switching to org: "${itemText.trim()}"`);
           await orgItems.nth(i).click();
           await page.waitForTimeout(2000);
-          await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+          await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
           switchedOrg = true;
 
           // Switch back to original org
@@ -460,7 +460,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
           try {
             await pm.homePage.selectOrganization(orgName);
             await page.waitForTimeout(2000);
-            await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+            await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
           } catch (err) {
             testLogger.warn(`Could not switch back to ${orgName}: ${err.message}`);
           }
@@ -486,7 +486,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #11244: Inconsistency in traces and logs table timestamp values
-  // https://github.com/openobserve/openobserve/issues/11244
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11244
   // ==========================================================================
   test("timestamp values should be consistent between traces and logs", {
     tag: ['@bug-11244', '@P2', '@regression', '@tracesRegression']
@@ -495,7 +495,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     const orgName = 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await pm.logsPage.selectRunQuery();
     await page.waitForTimeout(3000);
 
@@ -519,7 +519,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #8978: No cancel option while running a query in traces
-  // https://github.com/openobserve/openobserve/issues/8978
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8978
   // ==========================================================================
   test("cancel option should be available while running trace query", {
     tag: ['@bug-8978', '@P1', '@regression', '@tracesRegression']
@@ -529,7 +529,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     const orgName = 'default';
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.tracesPage.selectTraceStream('default');
     await pm.tracesPage.runTraceSearch();
@@ -546,7 +546,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #4151: Traces: On hovering over traces values in dark mode, text not visible
-  // https://github.com/openobserve/openobserve/issues/4151
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4151
   // ==========================================================================
   test("trace values should be visible on hover in dark mode", {
     tag: ['@bug-4151', '@P2', '@regression', '@tracesRegression']
@@ -563,7 +563,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Verify dark mode persisted across page navigation
     const isDarkAfterNav = await pm.homePage.isDarkMode();
@@ -600,7 +600,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
 
   // ==========================================================================
   // Bug #2887: Traces can be ordered by Duration
-  // https://github.com/openobserve/openobserve/issues/2887
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/2887
   // ==========================================================================
   test("traces should be orderable by duration column", {
     tag: ['@bug-2887', '@P1', '@regression', '@tracesRegression']
@@ -610,7 +610,7 @@ test.describe("Traces Regression Bugs — Batch 1", () => {
     const orgName = 'default';
     const tracesUrl = `/web/traces?org_identifier=${orgName}`;
     await page.goto(tracesUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.tracesPage.selectTraceStream('default');
     await pm.tracesPage.runTraceSearch();

@@ -1,7 +1,7 @@
 /**
  * Enrichment Table Regression Tests
  * Bug #9193: Enrichment table color contrast in light mode
- * https://github.com/openobserve/openobserve/issues/9193
+ * https://github.com/kovvurusubbu/openominitor/openobserve/issues/9193
  */
 
 const { test, expect, navigateToBase } = require('../../utils/enhanced-baseFixtures.js');
@@ -30,7 +30,7 @@ test.describe("Enrichment Table Regression Bugs", () => {
 
     // Navigate to Functions page (where enrichment tables are)
     await page.goto(`${process.env["ZO_BASE_URL"]}/web/functions?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     testLogger.info('Navigated to Functions page');

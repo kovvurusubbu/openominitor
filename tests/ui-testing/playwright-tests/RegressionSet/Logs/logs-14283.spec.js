@@ -3,7 +3,7 @@ const PageManager = require('../../../pages/page-manager.js');
 const testLogger = require('../../utils/test-logger.js');
 const logData = require('../../../fixtures/log.json');
 
-// https://github.com/openobserve/openobserve/issues/14283
+// https://github.com/kovvurusubbu/openominitor/openobserve/issues/14283
 //
 // Search History became a standalone route in #13512, so re-applying a query from it
 // remounts the logs page. The mount path used to restore the cached searchObj from Vuex

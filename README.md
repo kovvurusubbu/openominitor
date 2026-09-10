@@ -5,22 +5,22 @@
     <em>Open source Datadog alternative for logs, metrics, traces, and frontend monitoring. Modern observability platform: 10x easier, 140x lower storage cost, high performance, petabyte scale.</em>
 </p>
 <p align="center">
-<a href="https://github.com/openobserve/openobserve/releases" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/releases" target="_blank">
     <img src="https://img.shields.io/github/v/release/openobserve/openobserve" alt="GitHub Release">
 </a>
-<a href="https://github.com/openobserve/openobserve/blob/main/LICENSE" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/blob/main/LICENSE" target="_blank">
     <img src="https://img.shields.io/github/license/openobserve/openobserve" alt="License">
 </a>
-<a href="https://github.com/openobserve/openobserve/stargazers" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/stargazers" target="_blank">
     <img src="https://img.shields.io/github/stars/openobserve/openobserve" alt="GitHub Stars">
 </a>
-<a href="https://github.com/openobserve/openobserve/graphs/contributors" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/graphs/contributors" target="_blank">
     <img src="https://img.shields.io/github/contributors/openobserve/openobserve" alt="Contributors">
 </a>
-<a href="https://github.com/openobserve/openobserve/issues" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/issues" target="_blank">
     <img src="https://img.shields.io/github/issues/openobserve/openobserve" alt="GitHub Issues">
 </a>
-<a href="https://github.com/openobserve/openobserve/commits/main" target="_blank">
+<a href="https://github.com/kovvurusubbu/openominitor/openobserve/commits/main" target="_blank">
     <img src="https://img.shields.io/github/last-commit/openobserve/openobserve" alt="Last Commit">
 </a>
 </p>
@@ -316,8 +316,8 @@ Our Slack community is the most active place for installation and configuration 
 
 ### Other ways to connect
 
-- 💬 [GitHub Discussions](https://github.com/openobserve/openobserve/discussions) — longer-form discussions and Q&A
-- 🐛 [GitHub Issues](https://github.com/openobserve/openobserve/issues) — report bugs or request features
+- 💬 [GitHub Discussions](https://github.com/kovvurusubbu/openominitor/openobserve/discussions) — longer-form discussions and Q&A
+- 🐛 [GitHub Issues](https://github.com/kovvurusubbu/openominitor/openobserve/issues) — report bugs or request features
 - 📖 [Documentation](https://openobserve.ai/docs) — guides, tutorials, and API references
 
 ## Contributing
@@ -356,7 +356,7 @@ Most users are productive within hours, not weeks.
 
 ## License
 
-**Open Source Edition** — licensed under [AGPL-3.0](https://github.com/openobserve/openobserve/blob/main/LICENSE). We chose AGPL to ensure that improvements to OpenObserve remain open source and benefit the entire community, while still allowing free commercial use. [Why AGPL, and why it's good for the community →](https://openobserve.ai/blog/what-are-apache-gpl-and-agpl-licenses-and-why-openobserve-moved-from-apache-to-agpl/)
+**Open Source Edition** — licensed under [AGPL-3.0](https://github.com/kovvurusubbu/openominitor/openobserve/blob/main/LICENSE). We chose AGPL to ensure that improvements to OpenObserve remain open source and benefit the entire community, while still allowing free commercial use. [Why AGPL, and why it's good for the community →](https://openobserve.ai/blog/what-are-apache-gpl-and-agpl-licenses-and-why-openobserve-moved-from-apache-to-agpl/)
 
 **Enterprise Edition** — licensed under a commercial Enterprise License Agreement (not AGPL), which provides additional flexibility for enterprise deployments.
 

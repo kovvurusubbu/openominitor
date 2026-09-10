@@ -50,7 +50,7 @@ body:
     attributes:
       label: Related Story/Issue
       description: Link to the GitHub issue/story where this feature was developed
-      placeholder: "#1234 or https://github.com/openobserve/openobserve/issues/1234 or 'Not Available'"
+      placeholder: "#1234 or https://github.com/kovvurusubbu/openominitor/openobserve/issues/1234 or 'Not Available'"
 
   - type: dropdown
     id: is-regression

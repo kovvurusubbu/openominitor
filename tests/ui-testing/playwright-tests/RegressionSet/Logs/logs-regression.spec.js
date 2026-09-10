@@ -18,7 +18,7 @@ test.describe("Logs Regression Bugs", () => {
     pm = new PageManager(page);
 
     // Post-authentication stabilization wait
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Data ingestion for logs page testing
     await ingestTestData(page);
@@ -96,11 +96,11 @@ test.describe("Logs Regression Bugs", () => {
 
     // Select stream A
     await pm.logsPage.selectStream(streamA);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Click refresh to load data (data already verified indexed via waitForStreamData)
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Search for the field first to make it visible in sidebar
     await pm.logsPage.fillIndexFieldSearchInput(fieldForStreamA);
@@ -109,7 +109,7 @@ test.describe("Logs Regression Bugs", () => {
     // Add field to table for stream A
     await pm.logsPage.hoverOnFieldExpandButton(fieldForStreamA);
     await pm.logsPage.clickAddFieldToTableButton(fieldForStreamA);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(500);
 
     // Clear field search
@@ -133,11 +133,11 @@ test.describe("Logs Regression Bugs", () => {
 
     // Switch to stream B
     await pm.logsPage.selectStream(streamB);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Click refresh to load data (data already verified indexed via waitForStreamData)
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Search for the field first to make it visible in sidebar
     await pm.logsPage.fillIndexFieldSearchInput(fieldForStreamB);
@@ -146,7 +146,7 @@ test.describe("Logs Regression Bugs", () => {
     // Add different field to table for stream B
     await pm.logsPage.hoverOnFieldExpandButton(fieldForStreamB);
     await pm.logsPage.clickAddFieldToTableButton(fieldForStreamB);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(500);
 
     // Clear field search
@@ -174,7 +174,7 @@ test.describe("Logs Regression Bugs", () => {
     await pm.logsPage.fillSavedViewSearchInput(savedViewA);
     await page.waitForTimeout(1000);
     await pm.logsPage.clickSavedViewByText(savedViewA);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Verify stream A field is present
@@ -187,7 +187,7 @@ test.describe("Logs Regression Bugs", () => {
     await pm.logsPage.fillSavedViewSearchInput(savedViewB);
     await page.waitForTimeout(1000);
     await pm.logsPage.clickSavedViewByText(savedViewB);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Verify stream B field is present
@@ -214,7 +214,7 @@ test.describe("Logs Regression Bugs", () => {
 
   /**
    * Bug #7751: Values API giving error with complex queries (subqueries, CTEs)
-   * Issue: https://github.com/openobserve/openobserve/issues/7751
+   * Issue: https://github.com/kovvurusubbu/openominitor/openobserve/issues/7751
    * When users run complex SQL queries (subqueries, CTEs, JOINs) and try to expand
    * fields to see values, they get 400 error instead of field values.
    */
@@ -256,7 +256,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // SKIPPED: CTE (Common Table Expression) support is not yet implemented in the backend.
   // This test is prepared for when Bug #7751 is fixed and CTE syntax is supported.
-  // See: https://github.com/openobserve/openobserve/issues/7751
+  // See: https://github.com/kovvurusubbu/openominitor/openobserve/issues/7751
   // TODO: Remove .skip() once CTE support is added to the query engine
   test.skip('should load field values with CTE (Common Table Expression) without 400 error @bug-7751 @P1 @regression', async ({ page }) => {
     testLogger.info('Test: Field values with CTE (Common Table Expression)');
@@ -326,7 +326,7 @@ test.describe("Logs Regression Bugs", () => {
 
   /**
    * Bug #8868: Pagination count not updating after search/filter
-   * Issue: https://github.com/openobserve/openobserve/issues/8868
+   * Issue: https://github.com/kovvurusubbu/openominitor/openobserve/issues/8868
    * When user searches/filters results, pagination counter shows total count
    * instead of filtered count (e.g., searching 100 items with 20 matches still shows 100)
    */
@@ -339,7 +339,7 @@ test.describe("Logs Regression Bugs", () => {
     await page.waitForTimeout(2000);
 
     // Get initial pagination text (shows total count) - using POM method
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(1000); // Extra wait for pagination to update
 
     const initialPaginationText = await pm.logsPage.getPaginationText();
@@ -351,9 +351,9 @@ test.describe("Logs Regression Bugs", () => {
     const ofMatch = initialPaginationText.match(/of\s+(\d+)/i);
     const streamMatch = initialPaginationText.match(/(\d+)\s*Stream/i);
     if (ofMatch) {
-        initialTotal = parseInt(ofMatch[1]);
+      initialTotal = parseInt(ofMatch[1]);
     } else if (streamMatch) {
-        initialTotal = parseInt(streamMatch[1]);
+      initialTotal = parseInt(streamMatch[1]);
     }
     expect(initialTotal, `Pagination text "${initialPaginationText}" must match expected format`).toBeDefined();
     testLogger.info(`Initial total count: ${initialTotal}`);
@@ -364,7 +364,7 @@ test.describe("Logs Regression Bugs", () => {
     testLogger.info(`Entered search term: "${searchTerm}"`);
 
     // Wait for table filtering to complete
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(500); // Small buffer for UI update
 
     // Get pagination text after search - using POM method
@@ -376,11 +376,11 @@ test.describe("Logs Regression Bugs", () => {
     const filteredOfMatch = filteredPaginationText.match(/of\s+(\d+)/i);
     const filteredStreamMatch = filteredPaginationText.match(/(\d+)\s*Stream/i);
     if (filteredOfMatch) {
-        filteredTotal = parseInt(filteredOfMatch[1]);
+      filteredTotal = parseInt(filteredOfMatch[1]);
     } else if (filteredStreamMatch) {
-        filteredTotal = parseInt(filteredStreamMatch[1]);
+      filteredTotal = parseInt(filteredStreamMatch[1]);
     } else {
-        filteredTotal = 0;
+      filteredTotal = 0;
     }
     testLogger.info(`Filtered total count: ${filteredTotal}`);
 
@@ -410,11 +410,11 @@ test.describe("Logs Regression Bugs", () => {
     const clearedOfMatch = clearedPaginationText.match(/of\s+(\d+)/i);
     const clearedStreamMatch = clearedPaginationText.match(/(\d+)\s*Stream/i);
     if (clearedOfMatch) {
-        clearedTotal = parseInt(clearedOfMatch[1]);
+      clearedTotal = parseInt(clearedOfMatch[1]);
     } else if (clearedStreamMatch) {
-        clearedTotal = parseInt(clearedStreamMatch[1]);
+      clearedTotal = parseInt(clearedStreamMatch[1]);
     } else {
-        clearedTotal = 0;
+      clearedTotal = 0;
     }
     testLogger.info(`After clearing search, pagination shows: ${clearedTotal}`);
 
@@ -431,7 +431,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #8180: Multiple log search issues
-  // https://github.com/openobserve/openobserve/issues/8180
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8180
   test('should execute histogram query from search history without error @bug-8180 @P0 @regression', async ({ page }) => {
     testLogger.info('Test: Histogram query from search history (Bug #8180 - Part 2)');
 
@@ -570,7 +570,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #9455: Download validation and empty results handling
-  // https://github.com/openobserve/openobserve/issues/9455
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9455
   test('should handle empty results download for CSV @bug-9455 @P1 @regression @download', async ({ page }) => {
     testLogger.info('Test: Download empty CSV results (Bug #9455)');
 
@@ -683,7 +683,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #9117: SQL mode conversion with pipe operators
-  // https://github.com/openobserve/openobserve/issues/9117
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9117
   test('should convert pipe operators correctly when switching to SQL mode @bug-9117 @P1 @regression @sqlMode', async ({ page }) => {
     testLogger.info('Test: SQL mode conversion (Bug #9117)');
 
@@ -740,7 +740,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #8349: SQL queries with _timestamp as alias should be rejected
-  // https://github.com/openobserve/openobserve/issues/8349
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8349
   test('should reject _timestamp as alias in SQL query @bug-8349 @P1 @regression', async ({ page }) => {
     testLogger.info('Test: Validate _timestamp alias rejection in SQL query (Bug #8349)');
 
@@ -829,7 +829,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #9475: Apostrophes and special characters displayed without truncation
-  // https://github.com/openobserve/openobserve/issues/9475
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9475
   test('should display logs with apostrophes without truncation @bug-9475 @P1 @regression', async ({ page }) => {
     testLogger.info('Test: Validate log display with apostrophes and special characters (Bug #9475)');
 
@@ -960,7 +960,7 @@ test.describe("Logs Regression Bugs", () => {
       // Fallback: Check expanded log detail view instead
       await pm.logsPage.fillIndexFieldSearchInput('');
       await page.waitForTimeout(500);
-      await pm.logsPage.clickFirstTableRow().catch(() => {});
+      await pm.logsPage.clickFirstTableRow().catch(() => { });
       await page.waitForTimeout(1000);
       // Try to get content from the page using POM method
       logsTableContent = await pm.logsPage.getPageContent();
@@ -1011,7 +1011,7 @@ test.describe("Logs Regression Bugs", () => {
 
   // ============================================================================
   // Bug #9877: Auto refresh should update relative time range
-  // https://github.com/openobserve/openobserve/issues/9877
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9877
   test('should update time range when auto refresh is enabled @bug-9877 @P0 @regression', async ({ page }) => {
     testLogger.info('Test: Verify auto refresh updates relative time range (Bug #9877)');
 
@@ -1147,7 +1147,7 @@ test.describe("Logs Regression Bugs", () => {
 
   /**
    * Log detail sidebar default tab (originally Bug #9724).
-   * https://github.com/openobserve/openobserve/issues/9724
+   * https://github.com/kovvurusubbu/openominitor/openobserve/issues/9724
    *
    * The sidebar opens on JSON — the first tab in the bar. PR #13368 briefly made
    * Table the default; that was reverted back to the JSON default this test asserts,
@@ -1167,7 +1167,7 @@ test.describe("Logs Regression Bugs", () => {
 
     // Click refresh button to load data
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Wait for logs table to be visible
     await pm.logsPage.expectLogsTableVisible();
@@ -1369,13 +1369,13 @@ test.describe("Logs Regression Bugs", () => {
       if (isNaN(prev)) nanIndices.add(i - 1);
       if (isNaN(curr)) nanIndices.add(i);
       if (isNaN(prev) || isNaN(curr)) {
-        testLogger.warn(`Timestamp parsing failed: "${timestamps[i-1]}" -> ${prev}, "${timestamps[i]}" -> ${curr}`);
+        testLogger.warn(`Timestamp parsing failed: "${timestamps[i - 1]}" -> ${prev}, "${timestamps[i]}" -> ${curr}`);
         continue; // Skip this comparison but continue checking others
       }
       validTimestampCount++;
       if (prev < curr) {
         isDescending = false;
-        testLogger.warn(`Sort order broken at index ${i}: ${timestamps[i-1]} > ${timestamps[i]}`);
+        testLogger.warn(`Sort order broken at index ${i}: ${timestamps[i - 1]} > ${timestamps[i]}`);
         break;
       }
     }

@@ -205,7 +205,7 @@ describe("ImportDashboard.vue", () => {
     wrapper.vm.goToCommunityDashboards();
 
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      "https://github.com/openobserve/dashboards",
+      "https://github.com/kovvurusubbu/openominitor/dashboards",
       "_blank",
     );
   });
@@ -735,7 +735,7 @@ describe("ImportDashboard.vue", () => {
   });
 
   it("should test error handling in jsonFiles watcher", async () => {
-    const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => { });
 
     wrapper = mountComponent();
     await nextTick();

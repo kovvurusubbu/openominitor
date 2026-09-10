@@ -22,7 +22,7 @@
 //! partially implement this mapping; because `Metric.data` is a flattened
 //! `Option` oneof, every gap below makes the whole metric silently
 //! deserialize as `data: None` (or a value as 0) instead of failing the
-//! request — see <https://github.com/openobserve/openobserve/issues/12345>.
+//! request — see <https://github.com/kovvurusubbu/openominitor/openobserve/issues/12345>.
 //! Gaps in 0.32, each covered by a function here:
 //! - `NumberDataPoint`/`Exemplar` reject string-encoded `asInt` values
 //! - `aggregationTemporality` rejects enum names

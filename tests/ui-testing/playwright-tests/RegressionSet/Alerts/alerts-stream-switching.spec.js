@@ -42,7 +42,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     try {
       const baseUrl = process.env.ZO_BASE_URL || 'http://localhost:5080';
       await page.goto(`${baseUrl}?org_identifier=${ORG_ID}`);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       await ingestMetricsData(page, ORG_ID);
 
@@ -112,7 +112,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
   });
 
   // ============================================================================
@@ -136,7 +136,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11580: Metrics+PromQL -> switch to Logs, query editor still shows PromQL
-  // https://github.com/openobserve/openobserve/issues/11580
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11580
   // ============================================================================
   test("Bug #11580: Stream type switch from Metrics/PromQL to Logs resets query editor", {
     tag: ['@alerts', '@regressionBugs', '@P1', '@bug-11580', '@stream-switching']
@@ -144,7 +144,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Bug #11580: Verify PromQL editor clears when switching from metrics to logs');
     const alertsUrl = `${logData.alertUrl}?org_identifier=${ORG_ID}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Start with metrics - PromQL tab must be visible
     await setupToQueryConfig('metrics', METRICS_STREAM);
@@ -169,7 +169,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11572: Logs -> Metrics -> Logs shows chart error
-  // https://github.com/openobserve/openobserve/issues/11572
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11572
   // ============================================================================
   test("Bug #11572: Logs -> Metrics -> Logs switch does not show chart error", {
     tag: ['@alerts', '@regressionBugs', '@P1', '@bug-11572', '@stream-switching']
@@ -177,7 +177,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Bug #11572: Verify no chart error when switching logs <-> metrics <-> logs');
     const alertsUrl = `${logData.alertUrl}?org_identifier=${ORG_ID}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Phase 1: Logs - chart OK
     await setupToQueryConfig('logs', TEST_LOG_STREAM);
@@ -204,7 +204,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11571: Builder -> SQL mode switch shows blank table instead of chart
-  // https://github.com/openobserve/openobserve/issues/11571
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11571
   // ============================================================================
   test("Bug #11571: Builder to SQL mode switch renders chart correctly", {
     tag: ['@alerts', '@regressionBugs', '@P1', '@bug-11571', '@stream-switching']
@@ -212,7 +212,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Bug #11571: Verify chart renders when switching from Builder to SQL');
     const alertsUrl = `${logData.alertUrl}?org_identifier=${ORG_ID}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     await setupToQueryConfig('logs', TEST_LOG_STREAM);
 
@@ -226,7 +226,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
     // Close editor dialog (scoped to dialog to avoid ambiguity with wizard back button)
     await pm.alertsPage.closeEditorDialog();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // PRIMARY: Chart is not blank after SQL mode (Bug #11571: "blank table instead of line")
     await pm.alertsPage.expectPreviewChartNotBlank();
@@ -246,7 +246,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11573: Full editor open/close blanks the graph
-  // https://github.com/openobserve/openobserve/issues/11573
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11573
   //
   // In v3, the "View Editor" button opens the query editor dialog.
   // The bug: closing the editor blanks the preview chart.
@@ -258,7 +258,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Bug #11573: Verify chart re-renders after editor open/close');
     const alertsUrl = `${logData.alertUrl}?org_identifier=${ORG_ID}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     await setupToQueryConfig('logs', TEST_LOG_STREAM);
 
@@ -270,7 +270,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
     // PRIMARY: Close the editor dialog and verify chart survives (the core of Bug #11573)
     await pm.alertsPage.closeEditorDialog();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Bug #11573: editor close was blanking the graph — assert canvas exists, not just container
     await pm.alertsPage.expectPreviewChartNotBlank();
@@ -282,7 +282,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11578: Agg functions (avg/sum) show all fields instead of only integers
-  // https://github.com/openobserve/openobserve/issues/11578
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11578
   // ============================================================================
   test("Bug #11578: Agg functions filter to integer fields only", {
     tag: ['@alerts', '@regressionBugs', '@P2', '@bug-11578', '@stream-switching']
@@ -290,7 +290,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Bug #11578: Verify aggregation functions filter field types');
     const alertsUrl = `${logData.alertUrl}?org_identifier=${ORG_ID}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     await setupToQueryConfig('logs', TEST_LOG_STREAM);
 
@@ -312,8 +312,8 @@ test.describe("Alerts Stream Switching Regression", () => {
     // sum: verify same filtering, plus cross-check with known types
     await pm.alertsPage.selectAggregationFunction('sum');
     const sumFields = await pm.alertsPage.expectOnlyNumericFieldsVisible(allFields, {
-        knownNumeric: numericFields,
-        knownString: stringFields,
+      knownNumeric: numericFields,
+      knownString: stringFields,
     });
     expect(avgFields.sort(), 'avg and sum should filter to the same numeric-only field set').toEqual(sumFields.sort());
 
@@ -328,7 +328,7 @@ test.describe("Alerts Stream Switching Regression", () => {
 
   // ============================================================================
   // Bug #11577: Preview alert y-axis should show numeric values (e.g. "10K")
-  // https://github.com/openobserve/openobserve/issues/11577
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11577
   // The fix sets config.unit = "numbers" in PreviewAlert.vue, enabling SI-prefix
   // axis label formatting. We validate the fix by:
   //   1. Walking the Vue component tree to verify config.unit = "numbers"
@@ -346,7 +346,7 @@ test.describe("Alerts Stream Switching Regression", () => {
     testLogger.info('Fresh log data ingested for preview chart');
 
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Use the standard setup helper to create an alert with logs stream
     await setupToQueryConfig('logs', TEST_LOG_STREAM);
@@ -409,7 +409,7 @@ test.describe("Alerts Stream Switching Regression", () => {
           // PreviewAlert passes chartData = dashboardPanelData.data, so
           // config is at the root level (not nested under .data).
           if (comp.props && 'panelSchema' in comp.props &&
-              comp.props.panelSchema?.config) return true;
+            comp.props.panelSchema?.config) return true;
           return false;
         });
 
@@ -537,5 +537,5 @@ async function ingestMetricsData(page, orgId) {
   } catch (e) {
     testLogger.warn('Metrics ingestion may have failed', { error: e.message });
   }
-  await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+  await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 }

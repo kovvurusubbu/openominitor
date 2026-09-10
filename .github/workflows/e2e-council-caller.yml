@@ -146,7 +146,7 @@ jobs:
           gh pr comment "$PR" --repo openobserve/openobserve --body \
           "### 🤖 E2E Council — started ($MODE)
 
-          Running in o2-enterprise CI now (builds the enterprise binary to validate the spec) — I'll post the result back here when ready. ([engine runs](https://github.com/openobserve/o2-enterprise/actions/workflows/e2e-council.yml))"
+          Running in o2-enterprise CI now (builds the enterprise binary to validate the spec) — I'll post the result back here when ready. ([engine runs](https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/e2e-council.yml))"
 
       - name: Notify dispatch failure on the source PR
         # If the dispatch itself failed (expired/insufficient PAT, engine workflow missing, network),

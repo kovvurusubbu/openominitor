@@ -23,7 +23,7 @@ test.describe("Data Sources Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #11682: On clicking on AI integration the credentials disappear
-  // https://github.com/openobserve/openobserve/issues/11682
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11682
   // ==========================================================================
   test("AI integration content should persist when integration is re-clicked", {
     tag: ['@bug-11682', '@P1', '@regression', '@datasourcesRegression']

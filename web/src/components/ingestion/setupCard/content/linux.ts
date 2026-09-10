@@ -102,6 +102,6 @@ sudo journalctl -u openobserve-agent -n 50 --no-pager`,
       troubleshooting: sharedAgentTroubleshooting(t, "`sudo systemctl status openobserve-agent`"),
       uninstall: agentUninstall("linux"),
     },
-    docUrl: "https://github.com/openobserve/agents",
+    docUrl: "https://github.com/kovvurusubbu/openominitor/agents",
   };
 }

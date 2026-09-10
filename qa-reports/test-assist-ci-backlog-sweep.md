@@ -1,11 +1,11 @@
 # Test-Assist CI — Backlog Sweep
 
-> Automated bug-verification roll-up. One row per issue the [test-assist-ci pipeline](https://github.com/openobserve/o2-enterprise/actions/workflows/test-assist.yml) has processed. Verdicts come from CI; closures stay manual until pipeline accuracy is calibrated.
+> Automated bug-verification roll-up. One row per issue the [test-assist-ci pipeline](https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/test-assist.yml) has processed. Verdicts come from CI; closures stay manual until pipeline accuracy is calibrated.
 
-**Pipeline:** [`test-assist.yml`](https://github.com/openobserve/o2-enterprise/actions/workflows/test-assist.yml) (o2-enterprise)
+**Pipeline:** [`test-assist.yml`](https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/test-assist.yml) (o2-enterprise)
 **Batch dispatcher:** [`scripts/test-assist-ci-batch.sh`](../scripts/test-assist-ci-batch.sh)
 **Mode:** `write_mode=false` (no GitHub verdict writes; only the factual `Test-Assist-CI-Verified` label is applied per run)
-**Filter to find verified issues:** [`label:"Test-Assist-CI-Verified"`](https://github.com/openobserve/openobserve/issues?q=is%3Aissue+label%3A%22Test-Assist-CI-Verified%22)
+**Filter to find verified issues:** [`label:"Test-Assist-CI-Verified"`](https://github.com/kovvurusubbu/openominitor/openobserve/issues?q=is%3Aissue+label%3A%22Test-Assist-CI-Verified%22)
 
 ## How to read verdicts
 
@@ -49,7 +49,7 @@ echo "12452
 ./scripts/test-assist-ci-batch.sh < /tmp/batch.txt
 
 # 3. Watch progress at:
-#    https://github.com/openobserve/o2-enterprise/actions/workflows/test-assist.yml
+#    https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/test-assist.yml
 ```
 
 ## How to update the sweep table after a batch completes

@@ -611,7 +611,7 @@ pub async fn handle_otlp_request(
                     service_name_explicitly_set = true;
                 }
 
-                // special addition for https://github.com/openobserve/openobserve/issues/4851
+                // special addition for https://github.com/kovvurusubbu/openominitor/openobserve/issues/4851
                 // we set the status (error/non-error) properly, but skip the message
                 // however, that can be useful when debugging with traces, so we
                 // extract that as an attribute here.

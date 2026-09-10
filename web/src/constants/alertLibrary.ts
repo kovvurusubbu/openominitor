@@ -15,7 +15,7 @@
 
 // Single source of truth for where the curated alert library is fetched from.
 //
-// Alerts are authored in github.com/openobserve/o2-alerts-library and mirrored
+// Alerts are authored in github.com/kovvurusubbu/openominitor/o2-alerts-library and mirrored
 // byte-for-byte into the S3 prefix below by that repo's CI. The product NEVER
 // fetches them from GitHub at runtime — the GitHub API rate-limits
 // unauthenticated callers at 60 req/hr, which is what broke the dashboard

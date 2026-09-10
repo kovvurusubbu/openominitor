@@ -108,6 +108,6 @@ Get-Content -Tail 50 "$env:ProgramData\\openobserve-agent\\agent.log"`,
       ],
       uninstall: agentUninstall("windows"),
     },
-    docUrl: "https://github.com/openobserve/agents",
+    docUrl: "https://github.com/kovvurusubbu/openominitor/agents",
   };
 }

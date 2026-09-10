@@ -17,13 +17,13 @@ test.describe("Landing Page Regression Bug Fixes", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Landing page regression test setup completed');
   });
 
   // ==========================================================================
   // Bug #11604: Clicking on slack url at the top left gives blank page
-  // https://github.com/openobserve/openobserve/issues/11604
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11604
   // ==========================================================================
   test("Slack button should open a functional page, not blank", {
     tag: ['@bug-11604', '@P1', '@regression', '@landingRegression']
@@ -39,7 +39,7 @@ test.describe("Landing Page Regression Bug Fixes", () => {
     // Click opens in a new tab — POM method returns the new page handle
     const newPage = await pm.homePage.clickSlackButton();
 
-    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
+    await newPage.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => { });
     await newPage.waitForTimeout(2000);
 
     const bodyText = await newPage.evaluate(() => document.body.innerText).catch(() => '');

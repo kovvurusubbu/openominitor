@@ -22,7 +22,7 @@ const testLogger = require("../../utils/test-logger.js");
 
 // =============================================================================
 // Bug #11134: Same-dashboard drilldown URL clobbering
-// https://github.com/openobserve/openobserve/pull/11134
+// https://github.com/kovvurusubbu/openominitor/openobserve/pull/11134
 // Fix: "fix: enhance drilldown handling to prevent URL clobbering during same
 //      dashboard navigation"
 //
@@ -175,8 +175,8 @@ test.describe(
           expect(varValueAfterWait).toBe(varValueAfterDrilldown);
           testLogger.info(`✅ Bug #11134 guard passed — var-${variableName} value unchanged 800ms after same-dashboard drilldown`);
         } finally {
-          await pm.dashboardList.menuItem("dashboards-item").catch(() => {});
-          await deleteDashboard(page, dashboardName).catch(() => {});
+          await pm.dashboardList.menuItem("dashboards-item").catch(() => { });
+          await deleteDashboard(page, dashboardName).catch(() => { });
         }
       }
     );
@@ -296,8 +296,8 @@ test.describe(
           expect(varValueAfterWait).toBe(selectedValue);
           testLogger.info(`✅ Bug #11134 guard passed — var-${variableName} value unchanged 800ms after same-dashboard drilldown`);
         } finally {
-          await pm.dashboardList.menuItem("dashboards-item").catch(() => {});
-          await deleteDashboard(page, dashboardName).catch(() => {});
+          await pm.dashboardList.menuItem("dashboards-item").catch(() => { });
+          await deleteDashboard(page, dashboardName).catch(() => { });
         }
       }
     );
@@ -436,8 +436,8 @@ test.describe(
           expect(urlParamsAfterWait.get("dashboard")).toBe(dashboardParam);
           testLogger.info("✅ Bug #11134 guard passed — dashboard ID and var-* value both unchanged after tab-switch drilldown");
         } finally {
-          await pm.dashboardList.menuItem("dashboards-item").catch(() => {});
-          await deleteDashboard(page, dashboardName).catch(() => {});
+          await pm.dashboardList.menuItem("dashboards-item").catch(() => { });
+          await deleteDashboard(page, dashboardName).catch(() => { });
         }
       }
     );

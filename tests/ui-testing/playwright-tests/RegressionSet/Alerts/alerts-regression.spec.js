@@ -43,7 +43,7 @@ test.describe("Alerts Regression Bugs", () => {
     try {
       // Navigate to base to get auth context
       await page.goto(`${process.env.ZO_BASE_URL || 'http://localhost:5080'}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       // Ingest metrics data
       await ingestMetricsData(page);
@@ -142,14 +142,14 @@ test.describe("Alerts Regression Bugs", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Alerts regression test setup completed');
   });
 
   // ============================================================================
   // Bug #9967: Cannot save alert when selecting PromQL mode
-  // https://github.com/openobserve/openobserve/issues/9967
-  // Fix: https://github.com/openobserve/openobserve/pull/9970
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9967
+  // Fix: https://github.com/kovvurusubbu/openominitor/openobserve/pull/9970
   //
   // CONSOLIDATED TEST: Covers all scenarios in a single test for efficiency:
   // - P1: PromQL tab visibility for metrics streams
@@ -168,11 +168,11 @@ test.describe("Alerts Regression Bugs", () => {
 
     const alertsUrl = `${logData.alertUrl}?org_identifier=${getOrgIdentifier()}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Reload to ensure destinations are fetched (fixes deployed env caching issues)
     await page.reload();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // ========== PART 1: UI Element Visibility Tests ==========
     testLogger.info('PART 1: Testing UI element visibility');
@@ -187,7 +187,7 @@ test.describe("Alerts Regression Bugs", () => {
     await pm.alertsPage.selectStreamType('metrics');
 
     // Wait for stream listing API to complete after type change
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select a metrics stream using page object (handles retry and fallback)
     const streamSelected = await pm.alertsPage.selectMetricsStream(METRICS_STREAM);
@@ -240,7 +240,7 @@ test.describe("Alerts Regression Bugs", () => {
       testLogger.info(`Testing operator: ${operator}`);
 
       await page.goto(alertsUrl);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       // ✅ COVERAGE: P0 (>=) + P1 (<=) - Alert can be saved with PromQL mode
       const alertName = await pm.alertsPage.createScheduledAlertWithPromQL(
@@ -271,7 +271,7 @@ test.describe("Alerts Regression Bugs", () => {
 
   // ============================================================================
   // Bug #10899: Group By field autocomplete not working
-  // https://github.com/openobserve/openobserve/issues/10899
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10899
   // ============================================================================
   // SKIPPED: Timing out in current test environment (page.goto timeouts)
   // TODO: Re-enable when environment is stable
@@ -281,7 +281,7 @@ test.describe("Alerts Regression Bugs", () => {
 
     const alertsUrl = `${logData.alertUrl}?org_identifier=${getOrgIdentifier()}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Click Add Alert button
     await pm.alertsPage.clickAddAlertButton();
@@ -314,7 +314,7 @@ test.describe("Alerts Regression Bugs", () => {
     // The new QSelect needs time for Vue to mount the component fully.
     // Without this, the DOM element exists but the QSelect isn't interactive yet.
     await page.waitForTimeout(3000);
-    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => { });
     testLogger.info('✓ Clicked Group By add button');
 
     // After clicking add, the group-by OSelect trigger button appears (data-test="alert-group-by-select-0-trigger")
@@ -358,14 +358,14 @@ test.describe("Alerts Regression Bugs", () => {
 
     // Clean up
     await pm.alertsPage.clickBackButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     testLogger.info('✓ PASSED: Group By autocomplete test completed');
   });
 
   // ============================================================================
   // Bug #10872: Multi-window alert VRL processing not working correctly
-  // https://github.com/openobserve/openobserve/issues/10872
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10872
   // ============================================================================
   test("VRL Apply button should process multi-window result array correctly @bug-10872 @P2 @regression @alerts", async ({ page }, testInfo) => {
     test.setTimeout(300000); // 5 minutes timeout
@@ -379,11 +379,11 @@ test.describe("Alerts Regression Bugs", () => {
 
     const alertsUrl = `${logData.alertUrl}?org_identifier=${getOrgIdentifier()}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Navigate to create new alert
     await pm.alertsPage.clickCreateAlertButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Check if multi-window/compare options are available
     const compareWithPastContainer = pm.alertsPage.getCompareWithPastContainer();
@@ -392,7 +392,7 @@ test.describe("Alerts Regression Bugs", () => {
     // Try to find and enable multi-window mode
     if (await compareWithPastContainer.first().isVisible({ timeout: 5000 }).catch(() => false)) {
       await compareWithPastContainer.first().click();
-      await page.waitForLoadState('domcontentloaded').catch(() => {});
+      await page.waitForLoadState('domcontentloaded').catch(() => { });
       testLogger.info('✓ Compare with Past container found');
     } else {
       testLogger.info('Compare with Past container not found - may need to navigate to condition step first');
@@ -402,7 +402,7 @@ test.describe("Alerts Regression Bugs", () => {
     const conditionTab = pm.alertsPage.getConditionTab();
     if (await conditionTab.first().isVisible({ timeout: 3000 }).catch(() => false)) {
       await conditionTab.first().click();
-      await page.waitForLoadState('domcontentloaded').catch(() => {});
+      await page.waitForLoadState('domcontentloaded').catch(() => { });
     }
 
     // Look for VRL editor or apply VRL button
@@ -432,7 +432,7 @@ test.describe("Alerts Regression Bugs", () => {
     // PRIMARY ASSERTION: Apply VRL button should be available
     await expect(applyVrlButton).toBeVisible({ timeout: 3000 });
     await applyVrlButton.click();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('✓ Apply VRL button clicked');
 
     // STRONG ASSERTION: Check for error messages - the bug would cause an error here
@@ -450,14 +450,14 @@ test.describe("Alerts Regression Bugs", () => {
     }
 
     // Clean up
-    await pm.alertsPage.clickBackButton().catch(() => {});
+    await pm.alertsPage.clickBackButton().catch(() => { });
 
     testLogger.info('✓ PASSED: Multi-window VRL test completed');
   });
 
   // ============================================================================
   // Bug #10472: Alert firing count column not visible/incrementing
-  // https://github.com/openobserve/openobserve/issues/10472
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10472
   // ============================================================================
   // SKIPPED: Timing out in current test environment (page.goto timeouts)
   // TODO: Re-enable when environment is stable
@@ -473,7 +473,7 @@ test.describe("Alerts Regression Bugs", () => {
 
     const alertsUrl = `${logData.alertUrl}?org_identifier=${getOrgIdentifier()}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     testLogger.info('✓ Navigated to alerts list');
 
     // Check for "Last Triggered" column (closest proxy to firing count tracking)
@@ -505,14 +505,14 @@ test.describe("Alerts Regression Bugs", () => {
 
   // ============================================================================
   // Bug #10110: Template appears twice in override template input field
-  // https://github.com/openobserve/openobserve/issues/10110
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10110
   // ============================================================================
   test("Override template should appear only once in input field @bug-10110 @P2 @regression @alerts", async ({ page }) => {
     testLogger.info('Test: Verify template override displays value once (Bug #10110)');
 
     const alertsUrl = `${logData.alertUrl}?org_identifier=${getOrgIdentifier()}`;
     await page.goto(alertsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Start creating a real-time alert to reach the Alert Settings step
     await pm.alertsPage.clickAddAlertButton();
@@ -599,7 +599,7 @@ test.describe("Alerts Regression Bugs", () => {
 
     // Clean up - go back without saving
     await pm.alertsPage.clickBackButton();
-    await page.waitForLoadState('domcontentloaded').catch(() => {});
+    await page.waitForLoadState('domcontentloaded').catch(() => { });
 
     testLogger.info('✓ PASSED: Template override duplication test completed');
   });
@@ -620,7 +620,7 @@ test.describe("Alerts Regression Bugs", () => {
 
     try {
       await page.goto(`${process.env.ZO_BASE_URL || 'http://localhost:5080'}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
       await cleanupAlertDestination(page, cleanupPm, DESTINATION_NAME);
       await cleanupAlertTemplate(page, cleanupPm, TEMPLATE_NAME);
@@ -653,7 +653,7 @@ async function ingestMetricsData(page) {
   // session first so a stale cloud-config.json can't 401 the ingest — a silent 401 here
   // left the metrics stream uncreated, so the PromQL flow later timed out trying to
   // select 'e2e_test_cpu_usage'.
-  await refreshCloudConfig(page).catch(() => {});
+  await refreshCloudConfig(page).catch(() => { });
   const headers = getAuthHeaders();
 
   const timestamp = Math.floor(Date.now() / 1000);

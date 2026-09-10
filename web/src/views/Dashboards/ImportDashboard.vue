@@ -792,7 +792,7 @@ export default defineComponent({
     };
 
     const goToCommunityDashboards = () => {
-      window.open("https://github.com/openobserve/dashboards", "_blank");
+      window.open("https://github.com/kovvurusubbu/openominitor/dashboards", "_blank");
     };
     const updateDashboardTitle = (selectedDashboard, dashboardIndex) => {
       const jsonObj = JSON.parse(jsonStr.value);

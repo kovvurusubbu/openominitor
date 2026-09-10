@@ -163,21 +163,21 @@ export default function kubernetesCard(subs: CardSubstitutions, t: TranslateFn):
   const installVariants: RichCardStepVariant[] | undefined = isCloud
     ? undefined
     : [
-        {
-          id: "external",
-          labelKey: "ingestion.setupCard.externalEndpointVariant",
-          code: externalCode,
-          note: raw(`${INSTALLER_NOTE} ${ADVANCED_HINT}`),
-        },
-        {
-          id: "internal",
-          labelKey: "ingestion.setupCard.internalEndpointVariant",
-          code: codeFor(scriptInstall(`--internal-endpoint=${IN_CLUSTER_URL}`), subs),
-          note: raw(
-            `${t("ingestion.setupCard.k8sInternalEndpointNote")} ${INSTALLER_NOTE} ${ADVANCED_HINT}`,
-          ),
-        },
-      ];
+      {
+        id: "external",
+        labelKey: "ingestion.setupCard.externalEndpointVariant",
+        code: externalCode,
+        note: raw(`${INSTALLER_NOTE} ${ADVANCED_HINT}`),
+      },
+      {
+        id: "internal",
+        labelKey: "ingestion.setupCard.internalEndpointVariant",
+        code: codeFor(scriptInstall(`--internal-endpoint=${IN_CLUSTER_URL}`), subs),
+        note: raw(
+          `${t("ingestion.setupCard.k8sInternalEndpointNote")} ${INSTALLER_NOTE} ${ADVANCED_HINT}`,
+        ),
+      },
+    ];
 
   return {
     provider: {
@@ -292,12 +292,12 @@ kubectl get pods -n openobserve-collector`,
         },
       ],
     },
-    docUrl: "https://github.com/openobserve/openobserve-helm-chart",
+    docUrl: "https://github.com/kovvurusubbu/openominitor/openobserve-helm-chart",
     // Both links the page carried before the migration, restored as anchors.
     docLinks: [
       {
         label: t("ingestion.setupCard.hotCommerceExampleLink"),
-        url: "https://github.com/openobserve/hotcommerce",
+        url: "https://github.com/kovvurusubbu/openominitor/hotcommerce",
       },
       {
         label: raw("OpenTelemetry Operator"),

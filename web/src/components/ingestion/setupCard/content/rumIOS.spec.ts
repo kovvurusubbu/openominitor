@@ -241,7 +241,7 @@ describe("rumIOSCard builder", () => {
       const install = card.steps.find((s) => s.id === "install")!;
       const spm = install.variants!.find((v) => v.id === "spm")!;
 
-      expect(spm.code.raw).toContain("github.com/openobserve/openobserve-sdk-ios.git");
+      expect(spm.code.raw).toContain("github.com/kovvurusubbu/openominitor/openobserve-sdk-ios.git");
       expect(spm.code.raw).toContain("OpenObserveRUM");
     });
 

@@ -508,7 +508,7 @@ test.describe("Pipeline Regression - Scheduled Pipeline Validation", { tag: ['@a
 
   // ==========================================================================
   // Bug #11483: Getting 2 notifications while saving pipeline destination
-  // https://github.com/openobserve/openobserve/issues/11483
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11483
   // ==========================================================================
   test("should not show duplicate notifications on pipeline destination save", {
     tag: ['@bug-11483', '@P3', '@regression', '@pipelineRegression']
@@ -517,7 +517,7 @@ test.describe("Pipeline Regression - Scheduled Pipeline Validation", { tag: ['@a
 
     // Navigate to Settings → Pipeline Destinations via POM
     await pageManager.pipelinesPage.settingsMenu.click();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Pipeline Destinations tab is enterprise-only (v-if="config.isEnterprise == 'true'")
     const tabExists = await pageManager.pipelinesPage.pipelineDestinationsTab.count();

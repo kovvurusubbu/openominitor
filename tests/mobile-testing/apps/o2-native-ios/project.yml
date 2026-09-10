@@ -5,7 +5,7 @@ options:
     iOS: "16.0"
 packages:
   OpenObserve:
-    url: https://github.com/openobserve/openobserve-sdk-ios.git
+    url: https://github.com/kovvurusubbu/openominitor/openobserve-sdk-ios.git
     exactVersion: 0.1.0
 targets:
   O2NativeIOS:

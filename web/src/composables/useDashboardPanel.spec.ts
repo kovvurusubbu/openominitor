@@ -100,7 +100,7 @@ describe("useDashboardPanel", () => {
     ]);
 
     // Mock validatePanel
-    vi.mocked(panelValidation.validatePanel).mockImplementation(() => {});
+    vi.mocked(panelValidation.validatePanel).mockImplementation(() => { });
 
     // Mock zinc utils
     vi.mocked(zincutils.splitQuotedString).mockImplementation((str) => str.split(" "));
@@ -2602,7 +2602,7 @@ describe("useDashboardPanel", () => {
 
       it("should handle field operations safely", () => {
         // Test adding fields safely
-        expect(() => {}).not.toThrow();
+        expect(() => { }).not.toThrow();
 
         // Test removing fields safely
         expect(() => {
@@ -5561,7 +5561,7 @@ describe("useDashboardPanel", () => {
 
       const field1 =
         panel.dashboardPanelData.data.queries[0].fields.x[
-          panel.dashboardPanelData.data.queries[0].fields.x.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.x.length - 1
         ];
       expect(field1.sortBy).toBe("DESC"); // table chart
 
@@ -5572,7 +5572,7 @@ describe("useDashboardPanel", () => {
 
       const field2 =
         panel.dashboardPanelData.data.queries[0].fields.x[
-          panel.dashboardPanelData.data.queries[0].fields.x.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.x.length - 1
         ];
       expect(field2.sortBy).toBe("ASC"); // non-table chart
     });
@@ -5587,7 +5587,7 @@ describe("useDashboardPanel", () => {
 
       const field1 =
         panel.dashboardPanelData.data.queries[0].fields.breakdown[
-          panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
         ];
       expect(field1.sortBy).toBe("DESC");
       expect(field1.functionName).toBe("histogram");
@@ -5599,7 +5599,7 @@ describe("useDashboardPanel", () => {
 
       const field2 =
         panel.dashboardPanelData.data.queries[0].fields.breakdown[
-          panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
         ];
       expect(field2.sortBy).toBe("ASC");
       expect(field2.functionName).toBe("histogram");
@@ -5654,7 +5654,7 @@ describe("useDashboardPanel", () => {
 
       const field =
         panel.dashboardPanelData.data.queries[0].fields.x[
-          panel.dashboardPanelData.data.queries[0].fields.x.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.x.length - 1
         ];
       expect(field.label).toBe("custom_x_field");
       expect(field.alias).toBe("custom_x_field");
@@ -5672,7 +5672,7 @@ describe("useDashboardPanel", () => {
 
       const field =
         panel.dashboardPanelData.data.queries[0].fields.breakdown[
-          panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.breakdown.length - 1
         ];
       expect(field.label).toBe("custom_breakdown");
       expect(field.alias).toBe("custom_breakdown");
@@ -5706,14 +5706,14 @@ describe("useDashboardPanel", () => {
 
       const newField =
         panel.dashboardPanelData.data.queries[0].fields.y[
-          panel.dashboardPanelData.data.queries[0].fields.y.length - 1
+        panel.dashboardPanelData.data.queries[0].fields.y.length - 1
         ];
       expect(newField.color).toBeDefined();
     });
 
     /**
      * VRL Visualization Support Tests
-     * PR Reference: https://github.com/openobserve/openobserve/pull/9295
+     * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/9295
      *
      * Tests for the VRL function check added to determineChartType function.
      * When VRL functions produce derived fields, chart type should always be "table".

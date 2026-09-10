@@ -612,7 +612,7 @@ describe("VisualizeLogsQuery Component", () => {
   // v-model:open and emits update:open / save directly (ODialog/ODrawer contract).
   describe("AddToDashboard integration (ODialog/ODrawer migration)", () => {
     it("should render AddToDashboard stub bound to showAddToDashboardDialog", async () => {
-      mockValidatePanel.mockImplementation(() => {});
+      mockValidatePanel.mockImplementation(() => { });
       wrapper.vm.addToDashboard();
       await wrapper.vm.$nextTick();
 
@@ -623,7 +623,7 @@ describe("VisualizeLogsQuery Component", () => {
     });
 
     it("should close dialog when AddToDashboard emits update:open=false", async () => {
-      mockValidatePanel.mockImplementation(() => {});
+      mockValidatePanel.mockImplementation(() => { });
       wrapper.vm.addToDashboard();
       await wrapper.vm.$nextTick();
       expect(wrapper.vm.showAddToDashboardDialog).toBe(true);
@@ -636,7 +636,7 @@ describe("VisualizeLogsQuery Component", () => {
     });
 
     it("should close dialog when AddToDashboard emits save (addPanelToDashboard)", async () => {
-      mockValidatePanel.mockImplementation(() => {});
+      mockValidatePanel.mockImplementation(() => { });
       wrapper.vm.addToDashboard();
       await wrapper.vm.$nextTick();
       expect(wrapper.vm.showAddToDashboardDialog).toBe(true);
@@ -1732,7 +1732,7 @@ describe("VisualizeLogsQuery Component", () => {
 
   /**
    * VRL Visualization Support Tests - handleChartTypeChange
-   * PR Reference: https://github.com/openobserve/openobserve/pull/10343
+   * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/10343
    *
    * Tests for the updated handleChartTypeChange behavior.
    * VRL functions no longer block chart type switching - switching is allowed

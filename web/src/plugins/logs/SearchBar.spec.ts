@@ -3588,7 +3588,7 @@ describe("SearchBar.vue Actual Component Methods", () => {
 
 /**
  * VRL Visualization Support Tests - SearchBar VRL Editor
- * PR Reference: https://github.com/openobserve/openobserve/pull/9295
+ * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/9295
  *
  * Tests for the VRL editor changes:
  * 1. VRL editor is no longer read-only in visualize mode
@@ -3736,7 +3736,7 @@ describe("SearchBar.vue VRL Visualization Support", () => {
 
 /**
  * Build Query Toggle Support Tests - SearchBar.vue
- * PR Reference: https://github.com/openobserve/openobserve/pull/10305
+ * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/10305
  *
  * Tests for the new Build Query toggle button feature:
  * 1. Build toggle button rendering
@@ -4234,7 +4234,7 @@ describe("SearchBar.vue SQL mode → filter expression transition", () => {
 
 /**
  * VRL Editor Disabled for Non-Table Charts Tests
- * PR Reference: https://github.com/openobserve/openobserve/pull/10343
+ * PR Reference: https://github.com/kovvurusubbu/openominitor/openobserve/pull/10343
  *
  * Tests for the isVrlEditorDisabled computed property:
  * 1. VRL editor is disabled (readOnly) when in visualize mode with non-table chart

@@ -111,6 +111,6 @@ sudo tail -50 /Library/Logs/openobserve-collector/collector.err`,
       ],
       uninstall: agentUninstall("mac"),
     },
-    docUrl: "https://github.com/openobserve/agents",
+    docUrl: "https://github.com/kovvurusubbu/openominitor/agents",
   };
 }

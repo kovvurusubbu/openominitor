@@ -51,8 +51,8 @@ allow-direct-references = true
 packages = ["src/main"]
 
 [project.urls]
-"Homepage" = "https://github.com/openobserve/openobserve"
-"Bug Tracker" = "https://github.com/openobserve/openobserve/issues"
+"Homepage" = "https://github.com/kovvurusubbu/openominitor/openobserve"
+"Bug Tracker" = "https://github.com/kovvurusubbu/openominitor/openobserve/issues"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

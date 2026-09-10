@@ -7,7 +7,7 @@
 // CDN path (script tags served from browsersdk.openobserve.ai):
 //   1. Latest version published in the browser-sdk repo README — the source
 //      of truth for CDN releases (the CDN itself has no "latest" alias):
-//      https://github.com/openobserve/browser-sdk/blob/openobserve/README.md
+//      https://github.com/kovvurusubbu/openominitor/browser-sdk/blob/openobserve/README.md
 //   2. RUM_SDK_VERSION env var — manual override / offline fallback.
 //   Every candidate is PROBED against the live CDN before being accepted; an
 //   unprovisioned/unreachable candidate falls back to the version pinned in

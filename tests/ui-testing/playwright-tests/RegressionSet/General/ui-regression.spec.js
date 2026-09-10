@@ -1,9 +1,9 @@
 /**
  * UI Regression Tests - General UI Bugs
  * Bug #9217: Favicon icon missing on main branch
- * https://github.com/openobserve/openobserve/issues/9217
+ * https://github.com/kovvurusubbu/openominitor/openobserve/issues/9217
  * Bug #9308: OpenAPI button redirect from Help menu
- * https://github.com/openobserve/openobserve/issues/9308
+ * https://github.com/kovvurusubbu/openominitor/openobserve/issues/9308
  */
 
 const { test, expect, navigateToBase } = require('../../utils/enhanced-baseFixtures.js');
@@ -26,7 +26,7 @@ test.describe("UI Regression Bugs", () => {
   /**
    * Bug #9217: Favicon icon missing on main branch
    * Verifies that favicon is present in DOM and loads correctly via HTTP
-   * https://github.com/openobserve/openobserve/issues/9217
+   * https://github.com/kovvurusubbu/openominitor/openobserve/issues/9217
    */
   test("Favicon is present and loads correctly (Bug #9217)", {
     tag: ['@regressionBugs', '@smoke', '@P0', '@favicon', '@bug9217']
@@ -110,7 +110,7 @@ test.describe("UI Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #9325: Header refactored testing
-  // https://github.com/openobserve/openobserve/issues/9325
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9325
   // ==========================================================================
   test("should navigate correctly via header menu links @bug-9325 @P1 @navigation @regression", async ({ page }) => {
     testLogger.info('Test: Verify header navigation (Bug #9325)');
@@ -144,7 +144,7 @@ test.describe("UI Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #9565: About section not including org identifier
-  // https://github.com/openobserve/openobserve/issues/9565
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9565
   // ==========================================================================
   test("should preserve org_identifier across navigations @bug-9565 @P1 @navigation @regression", async ({ page }) => {
     testLogger.info('Test: Verify org_identifier preserved (Bug #9565)');
@@ -187,7 +187,7 @@ test.describe("UI Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #11064: Query management page text not in CamelCase
-  // https://github.com/openobserve/openobserve/issues/11064
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11064
   // ==========================================================================
   test.skip("Query management page should display text in CamelCase @bug-11064 @P3 @regression @accessibility", async ({ page }) => {
     testLogger.info('Test: Verify CamelCase text on Query management page (Bug #11064)');
@@ -195,7 +195,7 @@ test.describe("UI Regression Bugs", () => {
     // Navigate to Query management / Scheduled queries page
     const queryManagementUrl = `${process.env.ZO_BASE_URL || ''}/web/query-management?org_identifier=${process.env.ORGNAME || 'default'}`;
     await page.goto(queryManagementUrl);
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => { });
     testLogger.info('✓ Navigated to Query management page');
 
     // Check for lowercase words that should be CamelCase

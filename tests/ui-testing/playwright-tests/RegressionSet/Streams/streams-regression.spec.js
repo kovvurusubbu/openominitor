@@ -24,7 +24,7 @@ test.describe("Streams Regression Bugs", () => {
     pm = new PageManager(page);
 
     // Post-authentication stabilization wait
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     testLogger.info('Streams regression bug test setup completed');
   });
@@ -50,7 +50,7 @@ test.describe("Streams Regression Bugs", () => {
     await pm.streamsPage.exploreStream();
 
     // Wait for navigation to stream explorer
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Navigated to logs page after stream explorer click');
 
     // Verify expand button exists after stream explorer navigation (this will wait for element)
@@ -72,7 +72,7 @@ test.describe("Streams Regression Bugs", () => {
 
   // ============================================================================
   // Bug #7468: Multi-stream selection should display ellipsis with tooltip
-  // https://github.com/openobserve/openobserve/issues/7468
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/7468
   test('should display ellipsis with tooltip when multiple streams selected', {
     tag: ['@bug7468', '@P1', '@regression', '@streamsRegression', '@logs']
   }, async ({ page }) => {
@@ -123,7 +123,7 @@ test.describe("Streams Regression Bugs", () => {
     });
 
     // Wait for ingestion to complete
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Navigate to logs page
     await page.goto(`${logData.logsUrl}?org_identifier=${orgId}`);
@@ -140,7 +140,7 @@ test.describe("Streams Regression Bugs", () => {
     for (let i = 1; i < longStreamNames.length; i++) {
       await pm.logsPage.selectStream(longStreamNames[i], 5, 0, true);
       // Wait for stream to be selected
-      await page.waitForLoadState('domcontentloaded').catch(() => {});
+      await page.waitForLoadState('domcontentloaded').catch(() => { });
     }
 
     testLogger.info('Multiple long-named streams selected, checking UI behavior');
@@ -220,7 +220,7 @@ test.describe("Streams Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #9354: Auto add fts, secondary index fields to uds on creation
-  // https://github.com/openobserve/openobserve/issues/9354
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9354
   // ==========================================================================
   test("should access stream settings with FTS configuration", {
     tag: ['@bug9354', '@P1', '@fts', '@regression', '@streamsRegression', '@logs']
@@ -257,7 +257,7 @@ test.describe("Streams Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #7671: FTS fields and quick mode fields should be visually indicated in stream settings
-  // https://github.com/openobserve/openobserve/issues/7671
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/7671
   // ==========================================================================
   test("Full text search and quick mode fields should be visually indicated in stream settings @bug-7671 @P2 @regression @streams", async ({ page }) => {
     testLogger.info('Test: Verify FTS and quick mode fields are visually indicated (Bug #7671)');
@@ -299,7 +299,7 @@ test.describe("Streams Regression Bugs", () => {
     await pm.streamsPage.indexTypeSelect.click();
     // Wait for dropdown options to appear
     const fullTextSearchOption = pm.streamsPage.getFullTextSearchOption();
-    await expect(fullTextSearchOption.first()).toBeVisible({ timeout: 3000 }).catch(() => {});
+    await expect(fullTextSearchOption.first()).toBeVisible({ timeout: 3000 }).catch(() => { });
 
     // PRIMARY ASSERTION 1: Verify "Full text search" option exists
     const ftsOptionExists = await fullTextSearchOption.count() > 0;

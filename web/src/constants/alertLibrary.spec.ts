@@ -24,7 +24,7 @@ import {
 } from "./alertLibrary";
 
 // The alert library is served from S3 as a byte-for-byte mirror of
-// github.com/openobserve/o2-alerts-library. Two GETs are the entire client
+// github.com/kovvurusubbu/openominitor/o2-alerts-library. Two GETs are the entire client
 // surface — the manifest, then one alert file — so these builders are the only
 // place the bucket is named. Hardcoding a URL at a call site is exactly how the
 // dashboard gallery drifted (two paths, one stale, months apart).

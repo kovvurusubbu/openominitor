@@ -84,9 +84,9 @@ async function applySavedViewByName(pm, page, viewName) {
 
 async function deleteSavedViewQuietly(pm, page, viewName) {
   try {
-    await pm.logsPage.clickDeleteSavedViewButton(viewName).catch(() => {});
+    await pm.logsPage.clickDeleteSavedViewButton(viewName).catch(() => { });
     await page.waitForTimeout(500);
-    await pm.logsPage.clickConfirmButton().catch(() => {});
+    await pm.logsPage.clickConfirmButton().catch(() => { });
     testLogger.info(`Cleaned up saved view: ${viewName}`);
   } catch (cleanupError) {
     testLogger.debug(`Saved view cleanup skipped: ${viewName}`);
@@ -104,7 +104,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Attempt data ingestion but don't fail test if it errors (global setup already ingested data)
     try {
@@ -118,7 +118,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9996: Page appears blank midway on scroll
-  // https://github.com/openobserve/openobserve/issues/9996
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9996
   // ==========================================================================
   // SKIPPED: Timing out in current test environment (selectStream failures)
   // TODO: Re-enable when environment is stable
@@ -129,12 +129,12 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Navigate directly to logs page with stream and time parameters
     const fifteenMinsAgo = Date.now() - (15 * 60 * 1000);
     await page.goto(`${logData.logsUrl}?org_identifier=${process.env["ORGNAME"]}&stream=e2e_automate&stream_type=logs&from=${fifteenMinsAgo}&to=${Date.now()}`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Run query to load data
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Table must be visible before scroll
@@ -155,7 +155,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9796: Logs page load data without clicking on run query
-  // https://github.com/openobserve/openobserve/issues/9796
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9796
   // ==========================================================================
   test("should only load data after clicking run query @bug-9796 @P0 @queryBehavior @regression", async ({ page }) => {
     testLogger.info('Test: Verify no auto-load on stream selection (Bug #9796)');
@@ -173,7 +173,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     const initialCallCount = searchApiCalls.length;
     testLogger.info(`Initial API calls: ${initialCallCount}`);
 
@@ -186,7 +186,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Now click Run Query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Search API should be called after clicking run query
@@ -202,13 +202,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9533: Loading icon missing when run query for long duration
-  // https://github.com/openobserve/openobserve/issues/9533
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9533
   // ==========================================================================
   test("should show visual feedback during query execution @bug-9533 @P0 @loading @regression", async ({ page }) => {
     testLogger.info('Test: Verify loading indicator during query (Bug #9533)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -223,7 +223,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     await pm.logsPage.clickRefreshButton();
 
     // Wait for query to complete
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Button should be enabled after query completes
@@ -237,16 +237,16 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #8928: UI revamp issues - Search bar UI consistency
-  // https://github.com/openobserve/openobserve/issues/8928
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8928
   // ==========================================================================
   test("should display search bar with required UI elements @bug-8928 @P1 @ui @regression", async ({ page }) => {
     testLogger.info('Test: Verify search bar UI consistency (Bug #8928)');
 
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Stream selector must be visible
@@ -263,22 +263,22 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #8928: UI revamp issues - Histogram rendering
-  // https://github.com/openobserve/openobserve/issues/8928
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8928
   // ==========================================================================
   test("should render histogram without cropping @bug-8928 @P1 @ui @histogram @regression", async ({ page }) => {
     testLogger.info('Test: Verify histogram renders correctly (Bug #8928)');
 
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Toggle histogram on
     await pm.logsPage.enableHistogram();
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Histogram should be visible
@@ -304,7 +304,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select stream
     await pm.logsPage.selectStream('e2e_automate');
@@ -353,7 +353,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select stream
     await pm.logsPage.selectStream('e2e_automate');
@@ -373,7 +373,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Wait for logs table to be visible
@@ -397,7 +397,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select stream
     await pm.logsPage.selectStream('e2e_automate');
@@ -415,7 +415,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(3000);
 
     // STRONG ASSERTION: Error message should be visible
@@ -438,13 +438,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #10821: Quick mode text label click not working
-  // https://github.com/openobserve/openobserve/issues/10821
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10821
   // ==========================================================================
   test("should toggle quick mode when clicking on text label @bug-10821 @P3 @quickMode @regression", async ({ page }) => {
     testLogger.info('Test: Verify quick mode toggles via text label click (Bug #10821)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Get initial quick mode state
     const initialState = await pm.logsPage.getQuickModeState();
@@ -479,20 +479,20 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #11041: Multi-select behavior incorrect from sidebar
-  // https://github.com/openobserve/openobserve/issues/11041
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11041
   // ==========================================================================
   test.skip("should disable include button for already-included field values @bug-11041 @P2 @includeExclude @regression", async ({ page }) => {
     testLogger.info('Test: Verify multi-select sidebar behavior (Bug #11041)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await pm.logsPage.clickDateTimeButton();
     await pm.logsPage.clickRelative15MinButton();
 
     // Run initial query to get log results
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Verify logs table is visible
@@ -561,7 +561,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run the query with the include filter
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // BUG CHECK: The include button should now be disabled or show different state
@@ -577,7 +577,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Try clicking the same include button again - it should either:
     // 1. Be disabled, OR
     // 2. Not add duplicate entries
-    await fieldExpandButton.click().catch(() => {});
+    await fieldExpandButton.click().catch(() => { });
     await page.waitForTimeout(500);
 
     // Check if we can still click the same value's include button
@@ -670,7 +670,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Step 3: Navigate to logs and select stream1 (e2e_automate — always available)
     await pm.logsPage.clickMenuLinkLogsItem();
     await pm.logsPage.selectStream(stream1Name);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Set time range and run query
     await pm.logsPage.clickDateTimeButton();
@@ -715,7 +715,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Step 5: Switch to stream2 WITHOUT refreshing the page
     testLogger.info(`Switching to ${stream2Name} without page refresh`);
     await pm.logsPage.selectStream(stream2Name);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Run query for stream2 and wait for search API response
     const searchResponsePromise2 = page.waitForResponse(
@@ -760,7 +760,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9788: Share button should be disabled when ZO_WEB_URL is not configured
-  // https://github.com/openobserve/openobserve/issues/9788
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9788
   // ==========================================================================
   test("Share button should be disabled when ZO_WEB_URL is not configured @bug-9788 @P1 @shareLink @regression", async ({ page }, testInfo) => {
     testLogger.info('Test: Share button disabled state with mocked config (Bug #9788)');
@@ -785,12 +785,12 @@ test.describe("Logs Regression Bug Fixes", () => {
     const logsUrl = `${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`;
     testLogger.info('Navigating to logs page with mocked config');
     await page.goto(logsUrl);
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => { });
 
     // Select a stream and run query to load results
     await pm.logsPage.selectStream('e2e_automate');
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     testLogger.info('Logs page loaded with mocked config');
@@ -819,7 +819,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9690: VRL function not loading correctly when opening saved view
-  // https://github.com/openobserve/openobserve/issues/9690
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9690
   // ==========================================================================
   test("should load VRL function correctly when opening saved view @bug-9690 @P1 @savedViews @vrl @regression", async ({ page }) => {
     testLogger.info('Test: Verify VRL function loads correctly in saved views (Bug #9690)');
@@ -832,7 +832,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     try {
       // Navigate to logs page
       await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       await pm.logsPage.selectStream('e2e_automate');
       await page.waitForTimeout(1000);
 
@@ -867,7 +867,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
       // Step 4: Run query to have results
       await pm.logsPage.clickRefreshButton();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       await page.waitForTimeout(2000);
 
       // Step 5: Save the view
@@ -883,7 +883,7 @@ test.describe("Logs Regression Bug Fixes", () => {
       // Step 6: Reload the page to simulate fresh load
       testLogger.info('Step 6: Reloading page');
       await page.reload();
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       await page.waitForTimeout(2000);
 
       // Step 7: Navigate back to logs and select the saved view
@@ -929,9 +929,9 @@ test.describe("Logs Regression Bug Fixes", () => {
     } finally {
       // Cleanup: Delete the saved view if possible
       try {
-        await pm.logsPage.clickDeleteSavedViewButton(testViewName).catch(() => {});
+        await pm.logsPage.clickDeleteSavedViewButton(testViewName).catch(() => { });
         await page.waitForTimeout(500);
-        await pm.logsPage.clickConfirmButton().catch(() => {});
+        await pm.logsPage.clickConfirmButton().catch(() => { });
         testLogger.info(`Cleaned up test view: ${testViewName}`);
       } catch (cleanupError) {
         testLogger.debug('Cleanup skipped or failed gracefully');
@@ -943,19 +943,19 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #8224: Logs page showing message not display
-  // https://github.com/openobserve/openobserve/issues/8224
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8224
   // ==========================================================================
   test("should display showing message on logs page after query @bug-8224 @P2 @showingMessage @regression", async ({ page }) => {
     testLogger.info('Test: Verify showing message visible after query (Bug #8224)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Result pagination (showing X of Y records) should be visible
@@ -971,13 +971,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #5894: Timestamp should be default selected for multi stream selection
-  // https://github.com/openobserve/openobserve/issues/5894
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/5894
   // ==========================================================================
   test("should have timestamp column selected by default for multi stream @bug-5894 @P2 @timestamp @multiStream @regression", async ({ page }) => {
     testLogger.info('Test: Verify timestamp default selected for multi stream (Bug #5894)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -995,7 +995,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: _timestamp column should be visible in the table header
@@ -1007,7 +1007,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #10344: Run query button infinite loading when switching home↔logs
-  // https://github.com/openobserve/openobserve/issues/10344
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10344
   // ==========================================================================
   test("should not have run query button stuck in loading state after home-logs navigation @bug-10344 @P0 @runQuery @loading @regression", async ({ page }) => {
     testLogger.info('Test: Verify run query button not stuck loading after navigation (Bug #10344)');
@@ -1015,7 +1015,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Navigate to logs page via SPA menu click (not page.goto — Bug #10344 is about
     // SPA state-leak across in-app navigation, which full reloads would reset)
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(1000);
 
     // Navigate between home and logs multiple times using SPA menu clicks
@@ -1046,19 +1046,19 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #11469: Copy, include exclude displayed on hover under traces correlation
-  // https://github.com/openobserve/openobserve/issues/11469
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11469
   // ==========================================================================
   test("should not show copy/include/exclude on hover in traces correlation area @bug-11469 @P2 @correlation @hover @regression", async ({ page }) => {
     testLogger.info('Test: Verify correlation section hover behavior (Bug #11469)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
     // Run query to load data (traces was ingested by global setup)
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Expand a log row to reveal the detail dialog with correlation tabs
@@ -1089,7 +1089,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #5010: Console error when aggregating field with non-existent alias
-  // https://github.com/openobserve/openobserve/issues/5010
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/5010
   // ==========================================================================
   test("should not have console errors when aggregating with non-existent alias @bug-5010 @P1 @errorHandling @consoleError @regression", async ({ page }) => {
     testLogger.info('Test: Verify no console errors with non-existent alias aggregation (Bug #5010)');
@@ -1108,7 +1108,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     });
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1125,7 +1125,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(3000);
 
     // Check for query-level errors
@@ -1156,13 +1156,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #5278: Not getting pagination when histogram is turned off
-  // https://github.com/openobserve/openobserve/issues/5278
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/5278
   // ==========================================================================
   test("should show correct pagination when histogram is turned off @bug-5278 @P1 @pagination @histogram @regression", async ({ page }) => {
     testLogger.info('Test: Verify pagination shows correctly with histogram off (Bug #5278)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1178,7 +1178,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => { });
     await page.waitForTimeout(3000);
 
     // STRONG ASSERTION: Logs table should be visible (query completed)
@@ -1199,13 +1199,13 @@ test.describe("Logs Regression Bug Fixes", () => {
   // ==========================================================================
   // Bug #3821: Cannot read properties of undefined (reading 'partitions')
   //            when user changes stream selection during query
-  // https://github.com/openobserve/openobserve/issues/3821
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/3821
   // ==========================================================================
   test("should not show partitions error when changing stream during query @bug-3821 @P1 @errorHandling @streamSwitch @regression", async ({ page }) => {
     testLogger.info('Test: Verify no partitions error on stream change during query (Bug #3821)');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1238,7 +1238,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     await pm.logsPage.deselectStream('e2e_automate');
 
     // Wait for page to settle
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: No "Cannot read properties of undefined" or "partitions" errors
@@ -1264,7 +1264,7 @@ test.describe("Logs Regression Bug Fixes", () => {
   // ==========================================================================
   // Bug #6702: Cannot read properties of undefined partitions error when
   //            switching from logs to streams and back during query
-  // https://github.com/openobserve/openobserve/issues/6702
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/6702
   // ==========================================================================
   test("should not show partitions error when switching pages during query @bug-6702 @P1 @errorHandling @navigation @regression", async ({ page }) => {
     testLogger.info('Test: Verify no partitions error on page switch during query (Bug #6702)');
@@ -1272,7 +1272,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Use SPA menu navigation — not page.goto — because full reloads reset Pinia/Vue state,
     // destroying the in-flight query that the bug requires to trigger the partitions error
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1297,13 +1297,13 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Navigate to streams page via SPA while query is still running
     testLogger.info('Switching to streams page during query (SPA)');
     await pm.logsPage.clickMenuLinkStreamsItem();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Navigate back to logs page via SPA
     testLogger.info('Switching back to logs page (SPA)');
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(3000);
 
     // STRONG ASSERTION: No "Cannot read properties of undefined" or "partitions" errors
@@ -1319,7 +1319,7 @@ test.describe("Logs Regression Bug Fixes", () => {
   // ==========================================================================
   // Bug #3131: Order by not displayed by default for distinct queries and
   //            interesting field does not disappear on deselecting
-  // https://github.com/openobserve/openobserve/issues/3131
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/3131
   // ==========================================================================
   // SKIPPED: ORDER BY auto-injection for DISTINCT queries is server-side behavior
   // (Rust backend). The frontend sends the exact SQL as typed — neither the Monaco
@@ -1330,7 +1330,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     testLogger.info('Test: Verify order by displayed for distinct queries (Bug #3131) — SKIPPED: backend behavior, not UI-verifiable');
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1342,7 +1342,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     await page.waitForTimeout(500);
 
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     await pm.logsPage.expectLogsTableVisible();
@@ -1353,7 +1353,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #4315: Blank histogram on cancelling histogram API/query
-  // https://github.com/openobserve/openobserve/issues/4315
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4315
   // ==========================================================================
   test("should not show blank histogram after cancelling query @bug-4315 @P2 @histogram @cancel @regression", async ({ page }) => {
     testLogger.info('Test: Verify histogram not blank after cancel (Bug #4315)');
@@ -1361,7 +1361,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     const orgName = getOrgIdentifier() || 'default';
 
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(1000);
 
@@ -1413,7 +1413,7 @@ test.describe("Logs Regression Bug Fixes", () => {
     if (routeResolve) routeResolve();
     await page.waitForTimeout(500);
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 30000 }).catch(() => { });
     await page.waitForTimeout(3000);
 
     // Remove route handler
@@ -1427,13 +1427,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #10103: Query execution plan open/close shows "No results found"
-  // https://github.com/openobserve/openobserve/issues/10103
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10103
   // ==========================================================================
   test.skip("Opening and closing query execution plan should not clear results @bug-10103 @P2 @regression @logsRegression", async ({ page }) => {
     testLogger.info('Test: Verify Explain Query close does not break results (Bug #10103)');
 
     await pm.logsPage.navigateToLogs();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate');
     await page.waitForTimeout(2000);
 
@@ -1470,7 +1470,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #8641: Non-SQL mode multi-stream query not working
-  // https://github.com/openobserve/openobserve/issues/8641
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/8641
   // ==========================================================================
   test("Non-SQL mode should not error when querying multiple streams @bug-8641 @P2 @regression @logsRegression", async ({ page }) => {
     testLogger.info('Test: Verify non-SQL multi-stream query works (Bug #8641)');
@@ -1494,7 +1494,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query and verify no error
     await pm.logsPage.clickRunQueryButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     const errorVisible = await pm.logsPage.getGenericErrorLocator()
@@ -1510,7 +1510,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #5839: Logs page searchbar UI issue when sharing
-  // https://github.com/openobserve/openobserve/issues/5839
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/5839
   // ==========================================================================
   test("Shared logs page should display searchbar correctly @bug-5839 @P3 @regression @logsRegression", async ({ page }) => {
     testLogger.info('Test: Verify shared logs page searchbar renders correctly (Bug #5839)');
@@ -1518,15 +1518,15 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Navigate using the sidebar (same pattern as other passing logs tests)
     // then select stream without re-navigating (skipNavigation=true).
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     // Wait for the stream select OSelect to mount before interacting
-    await pm.logsPage.getStreamDropdown().first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
+    await pm.logsPage.getStreamDropdown().first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => { });
     await pm.logsPage.selectStream('e2e_automate', 5, 30000, true);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Run a query so the page has results state
     await pm.logsPage.clickRunQueryButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Open share via POM and verify success notification (link copied to clipboard)
     const shareInteractionWorked = await pm.logsPage.clickShareLinkAndExpectSuccess();
@@ -1544,7 +1544,7 @@ test.describe("Logs Regression Bug Fixes", () => {
   // ==========================================================================
   // Bug #10821: Quick mode is not working when clicking on text,
   //             but histogram toggle works
-  // https://github.com/openobserve/openobserve/issues/10821
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10821
   // ==========================================================================
   test("Quick mode should activate when clicking its toggle (not just histogram toggle)", {
     tag: ['@bug-10821', '@P1', '@regression', '@logsRegression', '@logsRegressionQuickMode']
@@ -1554,11 +1554,11 @@ test.describe("Logs Regression Bug Fixes", () => {
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
     await pm.logsPage.selectStream("e2e_automate");
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Run query first so search bar controls are fully rendered
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Use page object to find the quick/SQL mode toggle
     const quickModeToggle = await pm.logsPage.findQueryModeToggle();
@@ -1601,7 +1601,7 @@ test.describe("Logs Regression Bug Fixes", () => {
   // ==========================================================================
   // Bug #10595: ExpandedRow visible in 2 rows when user opens first row
   //             and clicks on run query
-  // https://github.com/openobserve/openobserve/issues/10595
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10595
   // ==========================================================================
   test("Only one row should be expanded after clicking run query", {
     tag: ['@bug-10595', '@P1', '@regression', '@logsRegression', '@logsRegressionTableRowExpand']
@@ -1615,7 +1615,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Run query to get results
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // Check for table rows using page object
     const tableRows = pm.logsPage.getLogsTableRows();
@@ -1648,7 +1648,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     // Now click run query
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // PRIMARY ASSERTION: Bug #10595 caused 2+ rows to expand after re-run.
     const tableBody = pm.logsPage.getLogsTableBody();
@@ -1664,7 +1664,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9049: Decimal Values should not be accepted in the datetime picker
-  // https://github.com/openobserve/openobserve/issues/9049
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9049
   // ==========================================================================
   test("Decimal values should be rejected in the absolute datetime picker", {
     tag: ['@bug-9049', '@P1', '@regression', '@logsRegression', '@logsRegressionDatetimeValidation']
@@ -1700,7 +1700,7 @@ test.describe("Logs Regression Bug Fixes", () => {
       await page.waitForTimeout(500);
 
       // Click outside to trigger validation
-      await pm.logsPage.getDateTimeButton().click().catch(() => {});
+      await pm.logsPage.getDateTimeButton().click().catch(() => { });
       await page.waitForTimeout(500);
 
       // Get the value to check if decimal was accepted
@@ -1736,9 +1736,9 @@ test.describe("Logs Regression Bug Fixes", () => {
     }
   });
 
-    // ==========================================================================
+  // ==========================================================================
   // Bug #11606: include/exclude search term gets added at incorrect position
-  // https://github.com/openobserve/openobserve/issues/11606
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11606
   // ==========================================================================
   test("include/exclude search term added at correct position in query", {
     tag: ['@bug-11606', '@P1', '@regression', '@logsRegression']
@@ -1747,7 +1747,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.logsPage.selectRunQuery();
     await page.waitForTimeout(3000);
@@ -1781,7 +1781,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #9339: collapse or expand the indexlist wont redraw the histogram chart
-  // https://github.com/openobserve/openobserve/issues/9339
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9339
   // ==========================================================================
   test("collapsing/expanding index list should redraw histogram chart", {
     tag: ['@bug-9339', '@P1', '@regression', '@logsRegression']
@@ -1790,7 +1790,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.logsPage.ensureHistogramState(true);
     await pm.logsPage.selectRunQuery();
@@ -1813,7 +1813,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #7310: Search term appended instead of replaced in streams dropdown
-  // https://github.com/openobserve/openobserve/issues/7310
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/7310
   // ==========================================================================
   test("stream dropdown selection should replace search term not append", {
     tag: ['@bug-7310', '@P1', '@regression', '@logsRegression']
@@ -1822,7 +1822,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     const streamDropdown = pm.logsPage.getStreamDropdown();
     await streamDropdown.click();
@@ -1846,7 +1846,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #5277: After moving column, click on query again and position changes back
-  // https://github.com/openobserve/openobserve/issues/5277
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/5277
   // ==========================================================================
   test("column positions should persist after re-running query", {
     tag: ['@bug-5277', '@P2', '@regression', '@logsRegression']
@@ -1855,7 +1855,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.logsPage.selectRunQuery();
     await page.waitForTimeout(3000);
@@ -1885,7 +1885,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #4426: Text wrap in saved view causes misalignment on view switch
-  // https://github.com/openobserve/openobserve/issues/4426
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4426
   // ==========================================================================
   test("text wrap toggle should not cause column misalignment on saved view switch", {
     tag: ['@bug-4426', '@P2', '@regression', '@logsRegression']
@@ -1894,7 +1894,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     await pm.logsPage.selectRunQuery();
     await page.waitForTimeout(3000);
@@ -1933,7 +1933,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #4091: Logs-Visualise - Cancel query to work on visualize page
-  // https://github.com/openobserve/openobserve/issues/4091
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/4091
   // ==========================================================================
   test("cancel query button should be available on visualize page", {
     tag: ['@bug-4091', '@P1', '@regression', '@logsRegression']
@@ -1942,7 +1942,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     const orgName = getOrgIdentifier() || 'default';
     await page.goto(`/web/logs?org_identifier=${orgName}&stream=e2e_automate&stream_type=logs`);
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     const visualizeToggle = pm.logsPage.getVisualizeToggle();
     if (await visualizeToggle.isVisible({ timeout: 5000 }).catch(() => false)) {
@@ -1974,7 +1974,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
   // ==========================================================================
   // Bug #14228: Builder saved view does not apply when already on the Build tab
-  // https://github.com/openobserve/openobserve/issues/14228
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/14228
   // ==========================================================================
   test("should apply a builder saved view while already on the build tab", {
     tag: ['@bug-14228', '@P1', '@regression', '@logsRegression', '@savedViews', '@queryBuilder']
@@ -1987,7 +1987,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     try {
       await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
       await pm.logsPage.selectStream('e2e_automate');
       await page.waitForTimeout(1000);
 
@@ -2031,7 +2031,7 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     try {
       await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
       await pm.logsPage.selectStream('e2e_automate');
       await page.waitForTimeout(1000);
 
@@ -2066,13 +2066,13 @@ test.describe("Logs Regression Bug Fixes", () => {
 
     try {
       await page.goto(`${logData.logsUrl}?org_identifier=${getOrgIdentifier() || 'default'}`);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
       await pm.logsPage.selectStream('e2e_automate');
       await page.waitForTimeout(1000);
 
       // Saved from the Logs tab, so the view carries no buildData.
       await pm.logsPage.clickRefreshButton();
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
       await page.waitForTimeout(2000);
 
       await pm.logsPage.clickSaveViewButton();

@@ -162,13 +162,13 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
     testLogger.testStart(testInfo.title, testInfo.file);
     await navigateToBase(page);
     pm = new PageManager(page);
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     testLogger.info('Logs highlighting regression test setup completed');
   });
 
   // ==========================================================================
   // Bug #9754: Logs highlighting character loss with unclosed brackets/quotes
-  // https://github.com/openobserve/openobserve/issues/9754
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9754
   // ==========================================================================
 
   test("should ingest test data with unclosed brackets/quotes @bug-9754 @setup", async ({ page }) => {
@@ -206,7 +206,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
     // Wait for data to be indexed (cloud indexing can take longer)
     testLogger.info(`Waiting for stream "${STREAM_NAME}" to be indexed...`);
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     const streamAvailable = await pm.logsPage.waitForStreamAvailable(STREAM_NAME, 90000, 3000);
     testLogger.info(`Stream "${STREAM_NAME}" available: ${streamAvailable}`);
 
@@ -225,14 +225,14 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select the test stream
     await pm.logsPage.selectStream(STREAM_NAME);
     await pm.logsPage.clickDateTimeButton();
     await pm.logsPage.clickRelative15MinButton();
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Table must be visible
@@ -264,7 +264,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select the test stream
     await pm.logsPage.selectStream(STREAM_NAME);
@@ -276,7 +276,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
     await pm.logsPage.typeQuery("match_all('spec')");
 
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Table must be visible with results
@@ -306,14 +306,14 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select the test stream
     await pm.logsPage.selectStream(STREAM_NAME);
     await pm.logsPage.clickDateTimeButton();
     await pm.logsPage.clickRelative15MinButton();
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // STRONG ASSERTION: Table must be visible
@@ -351,7 +351,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select the test stream and search for file path content
     await pm.logsPage.selectStream(STREAM_NAME);
@@ -362,7 +362,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
     await pm.logsPage.typeQuery("match_all('.ts')");
 
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Get table content
@@ -394,7 +394,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
 
     // Navigate to logs page
     await pm.logsPage.clickMenuLinkLogsItem();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Select the test stream
     await pm.logsPage.selectStream(STREAM_NAME);
@@ -405,7 +405,7 @@ test.describe("Logs Highlighting Regression Bug Fixes", () => {
     await pm.logsPage.typeQuery("match_all('second')");
 
     await pm.logsPage.clickRefreshButton();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
     await page.waitForTimeout(2000);
 
     // Get table content

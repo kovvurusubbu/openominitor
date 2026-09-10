@@ -19,7 +19,7 @@ test.describe('Traces Regression - Enterprise Features', () => {
     await navigateToBase(page);
     pm = new PageManager(page);
 
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     await pm.tracesPage.navigateToTraces();
 
@@ -32,7 +32,7 @@ test.describe('Traces Regression - Enterprise Features', () => {
 
   // ==========================================================================
   // Bug #11687: String.replace $ pattern vulnerability in ServiceGraphNodeSidePanel
-  // https://github.com/openobserve/openobserve/issues/11687
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11687
   // Enterprise-only: service graph toggle is gated behind config.isEnterprise == 'true'
   // ==========================================================================
   test('Service graph node side panel should render without errors after $ pattern fix', {
@@ -48,7 +48,7 @@ test.describe('Traces Regression - Enterprise Features', () => {
 
     const sgPage = pm.serviceGraphPage;
     await sgPage.navigateToServiceGraph();
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     const graphVisible = await sgPage.isServiceGraphVisible();
     expect(graphVisible, 'Bug #11687: Service graph should be visible').toBe(true);

@@ -117,4 +117,4 @@ jobs:
           gh pr comment "$PR" --repo openobserve/openobserve --body \
           "### 📝 DocGen — started
 
-          Running in o2-enterprise CI now — I'll post the documentation PR link(s) back here when ready. ([engine runs](https://github.com/openobserve/o2-enterprise/actions/workflows/docgen.yml))"
+          Running in o2-enterprise CI now — I'll post the documentation PR link(s) back here when ready. ([engine runs](https://github.com/kovvurusubbu/openominitor/o2-enterprise/actions/workflows/docgen.yml))"

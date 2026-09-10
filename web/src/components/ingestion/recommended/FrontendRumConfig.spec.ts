@@ -630,7 +630,7 @@ describe("FrontendRumConfig", () => {
       const card = wrapper.findComponent({ name: "SetupCardRenderer" });
       const install = card.props("content").steps.find((s: any) => s.id === "install");
       const spm = install.variants.find((v: any) => v.id === "spm");
-      expect(spm.code.raw).toContain("github.com/openobserve/openobserve-sdk-ios.git");
+      expect(spm.code.raw).toContain("github.com/kovvurusubbu/openominitor/openobserve-sdk-ios.git");
     });
 
     it("carries the raw RUM token into the Android and iOS init code", async () => {

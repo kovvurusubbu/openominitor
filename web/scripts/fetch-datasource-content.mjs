@@ -37,7 +37,7 @@ const GENERATED = join(CONTENT_DIR, "generated");
 
 const REPO =
   process.env.DS_CONTENT_REPO ||
-  "https://github.com/openobserve/o2-datasource.git";
+  "https://github.com/kovvurusubbu/openominitor/o2-datasource.git";
 const REF = process.env.DS_CONTENT_REF || "main";
 const SUBDIR = process.env.DS_CONTENT_SUBDIR || "datasource-ui-content";
 const FORCE = process.env.DS_CONTENT_FORCE === "1";

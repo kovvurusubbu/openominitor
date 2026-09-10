@@ -20,7 +20,7 @@ test.describe("Traces Regression Bugs", () => {
     await navigateToBase(page);
     pm = new PageManager(page);
 
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Navigate to traces page
     await pm.tracesPage.navigateToTraces();
@@ -35,7 +35,7 @@ test.describe("Traces Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #10769: Traces UI: Column sorting support
-  // https://github.com/openobserve/openobserve/issues/10769
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/10769
   // ==========================================================================
   test("Trace columns should support sorting", {
     tag: ['@bug-10769', '@P1', '@regression', '@tracesRegression', '@sorting']
@@ -43,14 +43,14 @@ test.describe("Traces Regression Bugs", () => {
     testLogger.info('Test: Verify trace column sorting (Bug #10769)');
 
     // Wait for traces page to be ready
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // Try to run a search to get results
     const runBtn = pm.tracesPage.getRunQueryButton().first();
     if (await runBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
       await runBtn.click();
       // Wait for search results to load
-      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
       testLogger.info('✓ Ran trace search');
     } else {
       testLogger.info('Run button not visible, checking existing results');
@@ -105,7 +105,7 @@ test.describe("Traces Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #9043: Trace pagination cursor resets when navigating back from trace details
-  // https://github.com/openobserve/openobserve/issues/9043
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/9043
   // ==========================================================================
   test("Pagination cursor should not reset after navigating back from trace details", {
     tag: ['@bug-9043', '@P1', '@regression', '@tracesRegression', '@pagination']
@@ -124,7 +124,7 @@ test.describe("Traces Regression Bugs", () => {
     }
 
     // Wait for traces to load
-    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => { });
 
     // STEP 1: Get initial trace count and capture trace IDs before navigation
     const initialTraceCount = await pm.tracesPage.getTraceCount();
@@ -155,7 +155,7 @@ test.describe("Traces Regression Bugs", () => {
     testLogger.info('✓ Navigated back from trace details');
 
     // Wait for traces list to be visible again
-    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+    await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => { });
 
     // STEP 4: Get trace count after navigation back with retry
     let afterBackTraceCount = await pm.tracesPage.getTraceCount();
@@ -282,7 +282,7 @@ test.describe("Traces Regression Bugs", () => {
         testLogger.info('✓ Scrolled results container to bottom');
 
         // Wait for potential lazy-load network response
-        await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+        await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => { });
         testLogger.info('✓ Waited for lazy-load response');
 
         // Check trace count after scroll
@@ -301,7 +301,7 @@ test.describe("Traces Regression Bugs", () => {
 
   // ==========================================================================
   // Bug #11689: Service Catalog: clearing search filter with cross icon blanks out the page
-  // https://github.com/openobserve/openobserve/issues/11689
+  // https://github.com/kovvurusubbu/openominitor/openobserve/issues/11689
   // ==========================================================================
   test("Clearing search filter should not blank out Service Catalog table", {
     tag: ['@bug-11689', '@P0', '@regression', '@tracesRegression', '@serviceCatalog']
