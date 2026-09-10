@@ -49,7 +49,7 @@ export interface PredefinedTheme {
 export const CUSTOM_THEME_NAME = "__custom__";
 
 /** The theme used as the default/fallback when nothing else is selected. */
-export const DEFAULT_THEME_NAME = "O2 Signature";
+export const DEFAULT_THEME_NAME = "Upsure Purple";
 
 /** localStorage keys, grouped per mode. */
 export const THEME_STORAGE_KEYS = {
@@ -70,8 +70,18 @@ export const THEME_STORAGE_KEYS = {
 /** Predefined themes with both light and dark mode colors. */
 export const PREDEFINED_THEMES: PredefinedTheme[] = [
   {
+    id: 100,
+    name: raw("Upsure Purple"),
+    light: {
+      themeColor: "#6D28D9",
+    },
+    dark: {
+      themeColor: "#A78BFA",
+    },
+  },
+  {
     id: 10,
-    name: raw("O2 Signature"),
+    name: raw("Signature"),
     light: {
       themeColor: "#6B76E3",
     },
@@ -81,7 +91,7 @@ export const PREDEFINED_THEMES: PredefinedTheme[] = [
   },
   {
     id: 2,
-    name: raw("O2 Pulse"),
+    name: raw("Pulse"),
     light: {
       themeColor: "#3F7994",
     },
@@ -91,7 +101,7 @@ export const PREDEFINED_THEMES: PredefinedTheme[] = [
   },
   {
     id: 4,
-    name: raw("O2 Horizon"),
+    name: raw("Horizon"),
     light: {
       themeColor: "#077A7F",
     },
@@ -101,7 +111,7 @@ export const PREDEFINED_THEMES: PredefinedTheme[] = [
   },
   {
     id: 5,
-    name: raw("O2 Beacon"),
+    name: raw("Beacon"),
     light: {
       themeColor: "#3369D6",
     },
@@ -111,7 +121,7 @@ export const PREDEFINED_THEMES: PredefinedTheme[] = [
   },
   {
     id: 8,
-    name: raw("O2 Lens"),
+    name: raw("Lens"),
     light: {
       themeColor: "#4682FA",
     },
@@ -121,7 +131,7 @@ export const PREDEFINED_THEMES: PredefinedTheme[] = [
   },
   {
     id: 14,
-    name: raw("O2 Crimson Ink"),
+    name: raw("Crimson Ink"),
     light: {
       themeColor: "#E11D48",
       semanticColors: {

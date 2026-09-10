@@ -194,10 +194,13 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: 8081,
-      // headers: {
-      //   "Content-Security-Policy":
-      //     "default-src 'self'; connect-src 'self' http://localhost:5080;  script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;img-src 'self' data:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; block-all-mixed-content;",
-      // },
+      proxy: {
+        "^/(?!web|@|src|node_modules|__vite|favicon).*": {
+          target: "http://127.0.0.1:5080",
+          changeOrigin: true,
+          ws: true,
+        },
+      },
     },
     base: "./",
     plugins: [

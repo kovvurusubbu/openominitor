@@ -103,7 +103,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     : 'images/common/openobserve_latest_light_2.svg',
                 )
               "
-              :alt="raw('OpenObserve')"
+              :alt="raw('Upsure Lens')"
             />
           </a>
         </div>
@@ -122,7 +122,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                   : 'images/common/openobserve_latest_light_2.svg',
               )
             "
-            :alt="raw('OpenObserve')"
+            :alt="raw('Upsure Lens')"
           />
         </a>
       </div>
@@ -176,10 +176,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           />
         </OButton>
 
-        <!-- EDITION BADGE / UPGRADE BUTTON -->
-        <!-- Enterprise/Cloud: ghost-muted badge (informational, opens about dialog) -->
-        <!-- Open Source: primary CTA to drive upgrades -->
+        <!-- Upsure Lens: OpenObserve edition/upgrade CTA hidden. -->
         <OButton
+          v-if="false"
           :variant="
             config.isEnterprise === 'true' || config.isCloud === 'true'
               ? 'outline-primary'
@@ -240,16 +239,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           <!-- THEME SWITCHER: Toggle between light and dark mode -->
           <ThemeSwitcher></ThemeSwitcher>
 
-          <!-- SLACK COMMUNITY LINK -->
-          <OButton
-            variant="ghost"
-            size="icon-toolbar"
-            data-test="menu-link-slack-item"
-            @click="openSlack"
-          >
-            <component :is="slackIcon" class="size-5 shrink-0" />
-            <OTooltip side="top" align="center" :content="raw('Slack')" />
-          </OButton>
+          <!-- Upsure Lens: Slack community link removed. -->
 
           <!-- HELP MENU: Contains links to docs, API, and about page -->
           <ODropdown side="bottom" align="end">

@@ -162,7 +162,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     >
       <GetStarted @removeFirstTimeLogin="removeFirstTimeLogin" />
     </ODialog>
-    <CommunitySlackInvite />
+    <!-- Upsure Lens: CommunitySlackInvite dialog removed. -->
     <PredefinedThemes />
     <ShortcutCheatsheet v-model:open="showShortcuts" />
   </div>
